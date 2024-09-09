@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://de2hhpq7sv1lp"]
+
+[ext_resource type="Texture2D" uid="uid://bnfh4xgdwx3ln" path="res://Assets/Character/jelly_person.png" id="1_deddm"]
+[ext_resource type="Script" path="res://Scenes/Characters/jelly_person.gd" id="1_untd8"]
+[ext_resource type="Texture2D" uid="uid://x2mv2qamvuqt" path="res://Assets/Character/all_mods_combined.png" id="3_35efr"]
+[ext_resource type="AnimationLibrary" uid="uid://3ifohkiof5dh" path="res://modifiers.res" id="4_kvpt4"]
+
+[sub_resource type="Animation" id="Animation_apyt0"]
+resource_name = "hover"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1.03526, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7b0a3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1.56088)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5php"]
+_data = {
+"RESET": SubResource("Animation_7b0a3"),
+"hover": SubResource("Animation_apyt0")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2mwcl"]
+radius = 46.0
+height = 208.0
+
+[node name="JellyPerson" type="CharacterBody2D"]
+script = ExtResource("1_untd8")
+character_class = 4
+
+[node name="JellyPersonBody" type="Sprite2D" parent="."]
+position = Vector2(0, 1.56088)
+scale = Vector2(0.199219, 0.199219)
+texture = ExtResource("1_deddm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="JellyPersonBody"]
+root_node = NodePath(".")
+libraries = {
+"": SubResource("AnimationLibrary_u5php")
+}
+autoplay = "hover"
+
+[node name="modifier" type="Sprite2D" parent="JellyPersonBody"]
+texture = ExtResource("3_35efr")
+hframes = 2
+vframes = 5
+frame = 6
+
+[node name="ModifierAnimations" type="AnimationPlayer" parent="JellyPersonBody/modifier"]
+libraries = {
+"animations": ExtResource("4_kvpt4")
+}
+autoplay = "animations/1_modifier"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_2mwcl")

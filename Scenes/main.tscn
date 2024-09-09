@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://eohrnhye0v6j"]
+
+[ext_resource type="Texture2D" uid="uid://ws5wif2au4l6" path="res://Assets/Backgrounds/Highest_Level_BG_Upwelling_gatherer.png" id="1_d7fdb"]
+[ext_resource type="PackedScene" uid="uid://de2hhpq7sv1lp" path="res://Scenes/Characters/jelly_person.tscn" id="2_fu54f"]
+
+[node name="Main" type="Node"]
+
+[node name="HighestLevelBgUpwellingGatherer" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_d7fdb")
+
+[node name="JellyPerson" parent="." instance=ExtResource("2_fu54f")]
