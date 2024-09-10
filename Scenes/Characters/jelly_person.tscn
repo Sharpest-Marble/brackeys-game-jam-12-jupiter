@@ -1,9 +1,44 @@
-[gd_scene load_steps=9 format=3 uid="uid://de2hhpq7sv1lp"]
+[gd_scene load_steps=19 format=3 uid="uid://de2hhpq7sv1lp"]
 
 [ext_resource type="Texture2D" uid="uid://bnfh4xgdwx3ln" path="res://Assets/Character/jelly_person.png" id="1_deddm"]
 [ext_resource type="Script" path="res://Scenes/Characters/jelly_person.gd" id="1_untd8"]
+[ext_resource type="Texture2D" uid="uid://bg2wf76twa3la" path="res://Assets/Character/jelly_outline.png" id="2_ilt62"]
 [ext_resource type="Texture2D" uid="uid://x2mv2qamvuqt" path="res://Assets/Character/all_mods_combined.png" id="3_35efr"]
 [ext_resource type="AnimationLibrary" uid="uid://3ifohkiof5dh" path="res://modifiers.res" id="4_kvpt4"]
+[ext_resource type="Texture2D" uid="uid://p10xfx3p04fi" path="res://Assets/Character/jelly_outline_selected.png" id="4_u3wws"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="5_qbhc0"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="6_jnron"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_y1qqi"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/animation_player_state.gd" id="8_3sde6"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_grl81"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="10_r80jp"]
+
+[sub_resource type="Animation" id="Animation_7b0a3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1.56088)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_apyt0"]
 resource_name = "hover"
@@ -34,37 +69,68 @@ tracks/1/keys = {
 "values": [0.0, 0.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_7b0a3"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_d25s7"]
+resource_name = "move"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
+tracks/0/path = NodePath("..:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.466667, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 1.56088)]
+"values": [0.261799, 0.261799, 0.261799]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("..:rotation")
+tracks/1/path = NodePath("..:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.466667, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(0, 1.56088), Vector2(0, -5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bpc5y"]
+resource_name = "move_left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.261799, -0.261799, -0.261799]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1.56088), Vector2(0, -5), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u5php"]
 _data = {
 "RESET": SubResource("Animation_7b0a3"),
-"hover": SubResource("Animation_apyt0")
+"hover": SubResource("Animation_apyt0"),
+"move": SubResource("Animation_d25s7"),
+"move_left": SubResource("Animation_bpc5y")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2mwcl"]
@@ -72,6 +138,7 @@ radius = 46.0
 height = 208.0
 
 [node name="JellyPerson" type="CharacterBody2D"]
+input_pickable = true
 script = ExtResource("1_untd8")
 character_class = 4
 
@@ -79,6 +146,20 @@ character_class = 4
 position = Vector2(0, 1.56088)
 scale = Vector2(0.199219, 0.199219)
 texture = ExtResource("1_deddm")
+
+[node name="JellyOutline" type="Sprite2D" parent="JellyPersonBody"]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+position = Vector2(0, -7.835)
+scale = Vector2(0.998901, 0.998901)
+texture = ExtResource("2_ilt62")
+
+[node name="JellyOutlineSelected" type="Sprite2D" parent="JellyPersonBody"]
+visible = false
+show_behind_parent = true
+scale = Vector2(1, 1)
+texture = ExtResource("4_u3wws")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="JellyPersonBody"]
 root_node = NodePath(".")
@@ -91,7 +172,7 @@ autoplay = "hover"
 texture = ExtResource("3_35efr")
 hframes = 2
 vframes = 5
-frame = 6
+frame = 8
 
 [node name="ModifierAnimations" type="AnimationPlayer" parent="JellyPersonBody/modifier"]
 libraries = {
@@ -100,5 +181,240 @@ libraries = {
 autoplay = "animations/1_modifier"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_2mwcl")
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("5_qbhc0")
+
+[node name="ParallelState" type="Node" parent="StateChart"]
+script = ExtResource("6_jnron")
+
+[node name="movement" type="Node" parent="StateChart/ParallelState"]
+script = ExtResource("7_y1qqi")
+initial_state = NodePath("hover")
+
+[node name="hover" type="Node" parent="StateChart/ParallelState/movement"]
+script = ExtResource("8_3sde6")
+animation_player = NodePath("../../../../JellyPersonBody/AnimationPlayer")
+animation_name = &"hover"
+
+[node name="trans_move_right" type="Node" parent="StateChart/ParallelState/movement/hover"]
+script = ExtResource("9_grl81")
+to = NodePath("../../move_right")
+event = &"move_right"
+delay_in_seconds = "0.0"
+
+[node name="trans_move_left" type="Node" parent="StateChart/ParallelState/movement/hover"]
+script = ExtResource("9_grl81")
+to = NodePath("../../move_left")
+event = &"move_left"
+delay_in_seconds = "0.0"
+
+[node name="move_right" type="Node" parent="StateChart/ParallelState/movement"]
+script = ExtResource("8_3sde6")
+animation_player = NodePath("../../../../JellyPersonBody/AnimationPlayer")
+animation_name = &"move"
+
+[node name="Transition" type="Node" parent="StateChart/ParallelState/movement/move_right"]
+script = ExtResource("9_grl81")
+to = NodePath("../../hover")
+event = &"idle"
+delay_in_seconds = "0.0"
+
+[node name="trans_move_left" type="Node" parent="StateChart/ParallelState/movement/move_right"]
+script = ExtResource("9_grl81")
+to = NodePath("../../move_left")
+event = &"move_left"
+delay_in_seconds = "0.0"
+
+[node name="move_left" type="Node" parent="StateChart/ParallelState/movement"]
+script = ExtResource("8_3sde6")
+animation_player = NodePath("../../../../JellyPersonBody/AnimationPlayer")
+animation_name = &"move_left"
+
+[node name="Transition" type="Node" parent="StateChart/ParallelState/movement/move_left"]
+script = ExtResource("9_grl81")
+to = NodePath("../../hover")
+event = &"idle"
+delay_in_seconds = "0.0"
+
+[node name="trans_move_right" type="Node" parent="StateChart/ParallelState/movement/move_left"]
+script = ExtResource("9_grl81")
+to = NodePath("../../move_right")
+event = &"move_right"
+delay_in_seconds = "0.0"
+
+[node name="modifier_states" type="Node" parent="StateChart/ParallelState"]
+script = ExtResource("7_y1qqi")
+initial_state = NodePath("default")
+
+[node name="default" type="Node" parent="StateChart/ParallelState/modifier_states"]
+script = ExtResource("8_3sde6")
+animation_player = NodePath("../../../../JellyPersonBody/modifier/ModifierAnimations")
+animation_name = &"animations/1_modifier"
+
+[node name="to_science" type="Node" parent="StateChart/ParallelState/modifier_states/default"]
+script = ExtResource("9_grl81")
+to = NodePath("../../scientist")
+event = &"become_scientist"
+delay_in_seconds = "0.0"
+
+[node name="to_com" type="Node" parent="StateChart/ParallelState/modifier_states/default"]
+script = ExtResource("9_grl81")
+to = NodePath("../../communicator")
+event = &"become_communicator"
+delay_in_seconds = "0.0"
+
+[node name="to_engineer" type="Node" parent="StateChart/ParallelState/modifier_states/default"]
+script = ExtResource("9_grl81")
+to = NodePath("../../engineer")
+event = &"become_engineer"
+delay_in_seconds = "0.0"
+
+[node name="to_farmer" type="Node" parent="StateChart/ParallelState/modifier_states/default"]
+script = ExtResource("9_grl81")
+to = NodePath("../../farmer")
+event = &"become_farmer"
+delay_in_seconds = "0.0"
+
+[node name="communicator" type="Node" parent="StateChart/ParallelState/modifier_states"]
+script = ExtResource("8_3sde6")
+animation_player = NodePath("../../../../JellyPersonBody/modifier/ModifierAnimations")
+animation_name = &"animations/Communicator_modifier"
+
+[node name="to_science" type="Node" parent="StateChart/ParallelState/modifier_states/communicator"]
+script = ExtResource("9_grl81")
+to = NodePath("../../scientist")
+event = &"become_scientist"
+delay_in_seconds = "0.0"
+
+[node name="to_engineer" type="Node" parent="StateChart/ParallelState/modifier_states/communicator"]
+script = ExtResource("9_grl81")
+to = NodePath("../../engineer")
+event = &"become_engineer"
+delay_in_seconds = "0.0"
+
+[node name="to_farmer" type="Node" parent="StateChart/ParallelState/modifier_states/communicator"]
+script = ExtResource("9_grl81")
+to = NodePath("../../farmer")
+event = &"become_farmer"
+delay_in_seconds = "0.0"
+
+[node name="engineer" type="Node" parent="StateChart/ParallelState/modifier_states"]
+script = ExtResource("8_3sde6")
+animation_player = NodePath("../../../../JellyPersonBody/modifier/ModifierAnimations")
+animation_name = &"animations/Engineer_modifier"
+
+[node name="to_com" type="Node" parent="StateChart/ParallelState/modifier_states/engineer"]
+script = ExtResource("9_grl81")
+to = NodePath("../../communicator")
+event = &"become_communicator"
+delay_in_seconds = "0.0"
+
+[node name="to_science" type="Node" parent="StateChart/ParallelState/modifier_states/engineer"]
+script = ExtResource("9_grl81")
+to = NodePath("../../scientist")
+event = &"become_scientist"
+delay_in_seconds = "0.0"
+
+[node name="to_farmer" type="Node" parent="StateChart/ParallelState/modifier_states/engineer"]
+script = ExtResource("9_grl81")
+to = NodePath("../../farmer")
+event = &"become_farmer"
+delay_in_seconds = "0.0"
+
+[node name="farmer" type="Node" parent="StateChart/ParallelState/modifier_states"]
+script = ExtResource("8_3sde6")
+animation_player = NodePath("../../../../JellyPersonBody/modifier/ModifierAnimations")
+animation_name = &"animations/Farmer_modifier"
+
+[node name="to_com" type="Node" parent="StateChart/ParallelState/modifier_states/farmer"]
+script = ExtResource("9_grl81")
+to = NodePath("../../communicator")
+event = &"become_communicator"
+delay_in_seconds = "0.0"
+
+[node name="to_science" type="Node" parent="StateChart/ParallelState/modifier_states/farmer"]
+script = ExtResource("9_grl81")
+to = NodePath("../../scientist")
+event = &"become_scientist"
+delay_in_seconds = "0.0"
+
+[node name="to_engineer" type="Node" parent="StateChart/ParallelState/modifier_states/farmer"]
+script = ExtResource("9_grl81")
+to = NodePath("../../engineer")
+event = &"become_engineer"
+delay_in_seconds = "0.0"
+
+[node name="scientist" type="Node" parent="StateChart/ParallelState/modifier_states"]
+script = ExtResource("8_3sde6")
+animation_player = NodePath("../../../../JellyPersonBody/modifier/ModifierAnimations")
+animation_name = &"animations/Science_modifier"
+
+[node name="to_com" type="Node" parent="StateChart/ParallelState/modifier_states/scientist"]
+script = ExtResource("9_grl81")
+to = NodePath("../../communicator")
+event = &"become_communicator"
+delay_in_seconds = "0.0"
+
+[node name="to_engineer" type="Node" parent="StateChart/ParallelState/modifier_states/scientist"]
+script = ExtResource("9_grl81")
+to = NodePath("../../engineer")
+event = &"become_engineer"
+delay_in_seconds = "0.0"
+
+[node name="to_farmer" type="Node" parent="StateChart/ParallelState/modifier_states/scientist"]
+script = ExtResource("9_grl81")
+to = NodePath("../../farmer")
+event = &"become_farmer"
+delay_in_seconds = "0.0"
+
+[node name="working" type="Node" parent="StateChart/ParallelState"]
+script = ExtResource("7_y1qqi")
+initial_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="StateChart/ParallelState/working"]
+script = ExtResource("10_r80jp")
+
+[node name="start_gathering" type="Node" parent="StateChart/ParallelState/working/idle"]
+script = ExtResource("9_grl81")
+to = NodePath("../../gathering")
+event = &"entered_building_radius"
+delay_in_seconds = "0.0"
+
+[node name="start_training" type="Node" parent="StateChart/ParallelState/working/idle"]
+script = ExtResource("9_grl81")
+to = NodePath("../../training")
+event = &"entered_building_radius_wrong_class"
+delay_in_seconds = "0.0"
+
+[node name="gathering" type="Node" parent="StateChart/ParallelState/working"]
+script = ExtResource("10_r80jp")
+
+[node name="start_transporting" type="Node" parent="StateChart/ParallelState/working/gathering"]
+script = ExtResource("9_grl81")
+to = NodePath("../../transporting")
+event = &"gathering_full"
+delay_in_seconds = "0.0"
+
+[node name="transporting" type="Node" parent="StateChart/ParallelState/working"]
+script = ExtResource("10_r80jp")
+
+[node name="start_gathering" type="Node" parent="StateChart/ParallelState/working/transporting"]
+script = ExtResource("9_grl81")
+to = NodePath("../../gathering")
+event = &"entered_building_radius"
+delay_in_seconds = "0.5
+"
+
+[node name="training" type="Node" parent="StateChart/ParallelState/working"]
+script = ExtResource("10_r80jp")
+
+[node name="start_gathering" type="Node" parent="StateChart/ParallelState/working/training"]
+script = ExtResource("9_grl81")
+to = NodePath("../../gathering")
+event = &"training_finished"
+delay_in_seconds = "0.0"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
