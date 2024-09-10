@@ -23,6 +23,7 @@ var class_animation_array = [
 
 
 func _ready() -> void:
+	state_chart.send_event(class_animation_array[character_class])
 	pass
 	
 
@@ -61,7 +62,7 @@ func _input(event):
 			if jelly_outline.visible:
 				selected = true
 				jelly_outline_selected.visible=true
-			if not event.shift_pressed:
+			if not jelly_outline.visible && not event.shift_pressed:
 				selected = false
 				jelly_outline_selected.visible=false
 			

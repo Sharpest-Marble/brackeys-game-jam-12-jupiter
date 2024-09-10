@@ -3,108 +3,79 @@
 [ext_resource type="Script" path="res://Scenes/pause_menu.gd" id="1_dy04f"]
 [ext_resource type="PackedScene" uid="uid://6i8f8gdcv7y1" path="res://Scenes/audio_slider.tscn" id="2_7qs5r"]
 
-[node name="pause_menu" type="Control"]
-process_mode = 2
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_dy04f")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control" type="Control" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Pause_Menu" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
+[node name="Pause_Menu" type="PanelContainer"]
+anchors_preset = -1
+anchor_left = 0.334
+anchor_top = 0.202
+anchor_right = 0.666
+anchor_bottom = 0.797
+offset_left = -0.280029
+offset_top = -0.160004
+offset_right = -0.719971
+offset_bottom = 0.239929
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
+script = ExtResource("1_dy04f")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/Pause_Menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/Pause_Menu/VBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Volume" type="Label" parent="HBoxContainer/VBoxContainer/Pause_Menu/VBoxContainer"]
+[node name="Volume" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Main Volume Slider"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MasterSlider" parent="HBoxContainer/VBoxContainer/Pause_Menu/VBoxContainer" instance=ExtResource("2_7qs5r")]
+[node name="MasterSlider" parent="VBoxContainer" instance=ExtResource("2_7qs5r")]
 layout_mode = 2
 size_flags_vertical = 2
 bus_name = "Master"
 
-[node name="Volume2" type="Label" parent="HBoxContainer/VBoxContainer/Pause_Menu/VBoxContainer"]
+[node name="Volume2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "SFX Volume Slider"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SFXSlider" parent="HBoxContainer/VBoxContainer/Pause_Menu/VBoxContainer" instance=ExtResource("2_7qs5r")]
+[node name="SFXSlider" parent="VBoxContainer" instance=ExtResource("2_7qs5r")]
 layout_mode = 2
 size_flags_vertical = 2
 bus_name = "SFX"
 
-[node name="Volume3" type="Label" parent="HBoxContainer/VBoxContainer/Pause_Menu/VBoxContainer"]
+[node name="Volume3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Music Volume Slider"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MasterSlider2" parent="HBoxContainer/VBoxContainer/Pause_Menu/VBoxContainer" instance=ExtResource("2_7qs5r")]
+[node name="MasterSlider2" parent="VBoxContainer" instance=ExtResource("2_7qs5r")]
 layout_mode = 2
 size_flags_vertical = 2
 bus_name = "Music"
 
-[node name="Control2" type="Control" parent="HBoxContainer/VBoxContainer/Pause_Menu/VBoxContainer"]
+[node name="Control2" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Pause_Menu/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer/Pause_Menu/VBoxContainer/HBoxContainer"]
+[node name="Quit" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "Quit"
 
-[node name="Resume" type="Button" parent="HBoxContainer/VBoxContainer/Pause_Menu/VBoxContainer/HBoxContainer"]
+[node name="Resume" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 6
 text = "Resume"
 
-[node name="Control2" type="Control" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Control2" type="Control" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Pause_Menu/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Pause_Menu/VBoxContainer/HBoxContainer/Resume" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Resume" to="." method="_on_button_pressed"]

@@ -1,9 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4p42tc6wft0k"]
+[gd_scene load_steps=19 format=3 uid="uid://c4p42tc6wft0k"]
 
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="1_y8sfh"]
 [ext_resource type="PackedScene" uid="uid://dn6fi0tof8bgp" path="res://Scenes/pause_menu.tscn" id="2_bnurd"]
 [ext_resource type="Texture2D" uid="uid://bkh4my3tuwra2" path="res://icon.svg" id="2_pog0c"]
+[ext_resource type="Texture2D" uid="uid://fywl70dq2du0" path="res://Assets/Building/comm_pod_1.png" id="3_2fgda"]
+[ext_resource type="PackedScene" uid="uid://iebop4csb30p" path="res://Scenes/comm_building.tscn" id="3_5y0mu"]
 [ext_resource type="PackedScene" uid="uid://c4gy5qh40nj7s" path="res://Scenes/building_button.tscn" id="3_p4vy7"]
+[ext_resource type="Texture2D" uid="uid://ca82ch2r78bhy" path="res://Assets/Building/farm_pod.png" id="4_28vh1"]
+[ext_resource type="Texture2D" uid="uid://c3kx5jb1ve5o8" path="res://Assets/Building/mining_pod_1.png" id="5_0w584"]
+[ext_resource type="PackedScene" uid="uid://y6s5jwvqwwoo" path="res://Scenes/farm_building.tscn" id="5_86ufr"]
+[ext_resource type="Texture2D" uid="uid://dclxtuxwxyacv" path="res://Assets/Building/science_pod_1.png" id="6_780op"]
+[ext_resource type="PackedScene" uid="uid://gq3jijttpahv" path="res://Scenes/mine_building.tscn" id="7_6yww2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a2iki"]
 font_size = 24
@@ -50,10 +57,13 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/Left Menu"]
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer/Left Menu"]
+layout_mode = 2
+
+[node name="Buildings Label" type="Label" parent="HBoxContainer/Left Menu/PanelContainer2"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Buildings to Build"
+text = "Buildings"
 label_settings = SubResource("LabelSettings_a2iki")
 horizontal_alignment = 1
 
@@ -70,21 +80,30 @@ columns = 2
 
 [node name="Building Button" parent="HBoxContainer/Left Menu/PanelContainer/GridContainer" instance=ExtResource("3_p4vy7")]
 layout_mode = 2
+building = ExtResource("3_5y0mu")
+building_texture = ExtResource("3_2fgda")
+button_text = "Comms Array"
+button_name = "Comms_building_button"
 
 [node name="Building Button2" parent="HBoxContainer/Left Menu/PanelContainer/GridContainer" instance=ExtResource("3_p4vy7")]
 layout_mode = 2
-button_text = "test2"
-button_name = "test_name2"
+building = ExtResource("5_86ufr")
+building_texture = ExtResource("4_28vh1")
+button_text = "Farm Pod"
+button_name = "farm_building_button"
 
 [node name="Building Button3" parent="HBoxContainer/Left Menu/PanelContainer/GridContainer" instance=ExtResource("3_p4vy7")]
 layout_mode = 2
-button_text = "test3"
-button_name = "test_name3"
+building = ExtResource("7_6yww2")
+building_texture = ExtResource("5_0w584")
+button_text = "Metalic Xenon Refinery"
+button_name = "mine_building_button"
 
 [node name="Building Button4" parent="HBoxContainer/Left Menu/PanelContainer/GridContainer" instance=ExtResource("3_p4vy7")]
 layout_mode = 2
-button_text = "test4"
-button_name = "test_name4"
+building_texture = ExtResource("6_780op")
+button_text = "Atmospheric Research Pod"
+button_name = "science_building_button"
 
 [node name="Panel" type="Panel" parent="HBoxContainer/Left Menu"]
 layout_mode = 2
@@ -202,4 +221,7 @@ size_flags_stretch_ratio = 10.0
 layout_mode = 1
 
 [connection signal="button_make_building" from="HBoxContainer/Left Menu/PanelContainer/GridContainer/Building Button" to="." method="_on_building_button_button_make_building"]
+[connection signal="button_make_building" from="HBoxContainer/Left Menu/PanelContainer/GridContainer/Building Button2" to="." method="_on_building_button_2_button_make_building"]
+[connection signal="button_make_building" from="HBoxContainer/Left Menu/PanelContainer/GridContainer/Building Button3" to="." method="_on_building_button_3_button_make_building"]
+[connection signal="button_make_building" from="HBoxContainer/Left Menu/PanelContainer/GridContainer/Building Button4" to="." method="_on_building_button_4_button_make_building"]
 [connection signal="pressed" from="HBoxContainer/Right Menu/Game Settings/Button" to="." method="_on_button_pressed"]

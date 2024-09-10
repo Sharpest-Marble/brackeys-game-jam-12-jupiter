@@ -16,10 +16,14 @@ script = ExtResource("1_8gxdj")
 position = Vector2(960, 540)
 texture = ExtResource("1_d7fdb")
 
-[node name="JellyPerson" parent="." instance=ExtResource("2_fu54f")]
-position = Vector2(527, 381)
-target_location = Vector2(500, 0)
-
 [node name="BuildingsContainer" type="Node2D" parent="."]
+
+[node name="JellyPerson" parent="." instance=ExtResource("2_fu54f")]
+position = Vector2(1242, 353)
+target_location = Vector2(500, 500)
+
+[node name="JellyPerson2" parent="." instance=ExtResource("2_fu54f")]
+position = Vector2(1269, 528)
+target_location = Vector2(500, 600)
 
 [connection signal="ui_make_building" from="CanvasLayer/Control" to="." method="_on_control_ui_make_building"]

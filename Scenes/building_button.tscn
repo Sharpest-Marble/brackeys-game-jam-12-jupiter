@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4gy5qh40nj7s"]
 
 [ext_resource type="Script" path="res://Scenes/building_button.gd" id="1_ro0xm"]
-[ext_resource type="PackedScene" uid="uid://ifvmrblfw5e4" path="res://Scenes/building.tscn" id="2_7dfo6"]
+[ext_resource type="PackedScene" uid="uid://ifvmrblfw5e4" path="res://Scenes/science_building.tscn" id="2_7dfo6"]
 
 [node name="Building Button" type="Control"]
 layout_mode = 3

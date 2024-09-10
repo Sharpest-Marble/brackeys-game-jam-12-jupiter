@@ -22,3 +22,16 @@ func _on_button_pressed() -> void:
 
 func _on_building_button_button_make_building(building: Variant) -> void:
 	ui_make_building.emit(building)
+
+
+func _on_building_button_2_button_make_building(building: Variant) -> void:
+	ui_make_building.emit(building)
+	pass # Replace with function body.
+
+
+func _on_building_button_3_button_make_building(building: Variant) -> void:
+	ui_make_building.emit(building)
+
+
+func _on_building_button_4_button_make_building(building: Variant) -> void:
+	ui_make_building.emit(building)
