@@ -1,29 +1,193 @@
-[gd_scene load_steps=5 format=3 uid="uid://eohrnhye0v6j"]
+[gd_scene load_steps=11 format=3 uid="uid://eohrnhye0v6j"]
 
-[ext_resource type="PackedScene" uid="uid://c4p42tc6wft0k" path="res://Scenes/ui.tscn" id="1_2dobh"]
+[ext_resource type="PackedScene" uid="uid://c4p42tc6wft0k" path="res://Scenes/UI/ui.tscn" id="1_2dobh"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_8gxdj"]
 [ext_resource type="Texture2D" uid="uid://ws5wif2au4l6" path="res://Assets/Backgrounds/Highest_Level_BG_Upwelling_gatherer.png" id="1_d7fdb"]
 [ext_resource type="PackedScene" uid="uid://de2hhpq7sv1lp" path="res://Scenes/Characters/jelly_person.tscn" id="2_fu54f"]
+[ext_resource type="PackedScene" uid="uid://ctg0v875xohnf" path="res://Scenes/building_point.tscn" id="4_h3iyk"]
+[ext_resource type="Texture2D" uid="uid://lpvvgfectogm" path="res://Assets/Backgrounds/Flying_Ferns_BG.png" id="5_r6bxw"]
+[ext_resource type="Texture2D" uid="uid://bko4i2png4jt6" path="res://Assets/Backgrounds/highest_level_southern_wall_bg.png" id="6_6g7su"]
+[ext_resource type="Texture2D" uid="uid://siqrwdbnkgwx" path="res://Assets/Backgrounds/Journey_Down_BG.png" id="7_opmj2"]
+[ext_resource type="Texture2D" uid="uid://7swo7j6l00k" path="res://Assets/Backgrounds/meeting_room.png" id="8_ku8p6"]
+[ext_resource type="Texture2D" uid="uid://cyh4dcyqoqne4" path="res://Assets/Backgrounds/metal_divers_bg.png" id="9_n5nyb"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_8gxdj")
+
+[node name="TimeTillNextDay" type="Timer" parent="."]
+wait_time = 300.0
+autostart = true
+
+[node name="PassiveResourceTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("1_2dobh")]
 
+[node name="FlyingFernsBg" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("5_r6bxw")
+
+[node name="building_point" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(903, 400)
+building_type = 2
+
+[node name="building_point2" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(617, 420)
+building_type = 2
+
+[node name="building_point3" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(610, 195)
+building_type = 2
+
+[node name="building_point4" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(311, 198)
+building_type = 2
+
+[node name="building_point5" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(284, 394)
+building_type = 2
+
+[node name="building_point6" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(0, 415)
+building_type = 2
+
+[node name="building_point7" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-506, 346)
+building_type = 2
+
+[node name="building_point8" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-409, 452)
+building_type = 2
+
+[node name="building_point9" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-96, 222)
+building_type = 2
+
+[node name="building_point10" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-412, 160)
+building_type = 2
+
+[node name="JellyPerson" parent="FlyingFernsBg" instance=ExtResource("2_fu54f")]
+position = Vector2(282, -187)
+collision_layer = 0
+collision_mask = 0
+target_location = Vector2(500, 500)
+
+[node name="HighestLevelSouthernWallBg" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("6_6g7su")
+
+[node name="comms_1" parent="HighestLevelSouthernWallBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(138, 445)
+collision_layer = 0
+collision_mask = 0
+building_type = 1
+layer_active = 19
+
+[node name="comms_2" parent="HighestLevelSouthernWallBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(732, 445)
+collision_layer = 0
+collision_mask = 0
+building_type = 1
+
+[node name="comms_3" parent="HighestLevelSouthernWallBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(624, 299)
+collision_layer = 0
+collision_mask = 0
+building_type = 1
+
+[node name="comms_4" parent="HighestLevelSouthernWallBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(53, 289)
+collision_layer = 0
+collision_mask = 0
+building_type = 1
+
+[node name="comms_5" parent="HighestLevelSouthernWallBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-237, 253)
+collision_layer = 0
+collision_mask = 0
+building_type = 1
+
+[node name="comms_6" parent="HighestLevelSouthernWallBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-365, 404)
+collision_layer = 0
+collision_mask = 0
+building_type = 1
+
 [node name="HighestLevelBgUpwellingGatherer" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(960, 540)
 texture = ExtResource("1_d7fdb")
 
-[node name="BuildingsContainer" type="Node2D" parent="."]
+[node name="MeetingRoom" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("8_ku8p6")
 
-[node name="JellyPerson" parent="." instance=ExtResource("2_fu54f")]
-position = Vector2(1242, 353)
-target_location = Vector2(500, 500)
+[node name="JourneyDownBg" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("7_opmj2")
 
-[node name="JellyPerson2" parent="." instance=ExtResource("2_fu54f")]
-position = Vector2(1269, 528)
+[node name="building_point2" parent="JourneyDownBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-450, 154)
+building_type = 3
+
+[node name="building_point3" parent="JourneyDownBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-526, 316)
+building_type = 3
+
+[node name="building_point4" parent="JourneyDownBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-347, 445)
+building_type = 3
+
+[node name="building_point5" parent="JourneyDownBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-2, 498)
+building_type = 3
+
+[node name="building_point6" parent="JourneyDownBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(332, 484)
+building_type = 3
+
+[node name="building_point7" parent="JourneyDownBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(560, 264)
+building_type = 3
+
+[node name="building_point8" parent="JourneyDownBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(334, 114)
+building_type = 3
+
+[node name="MetalDiversBg" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("9_n5nyb")
+
+[node name="JellyPerson2" parent="MetalDiversBg" instance=ExtResource("2_fu54f")]
+position = Vector2(309, -12)
+collision_layer = 1048576
+collision_mask = 1048576
 target_location = Vector2(500, 600)
 
+[node name="building_point" parent="MetalDiversBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-458, 360)
+
+[node name="building_point2" parent="MetalDiversBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(488, 372)
+
+[node name="building_point3" parent="MetalDiversBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(536, 162)
+
+[node name="building_point4" parent="MetalDiversBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-70, 62)
+
+[node name="BuildingsContainer" type="Node2D" parent="."]
+
+[connection signal="timeout" from="TimeTillNextDay" to="." method="_on_time_till_next_day_timeout"]
+[connection signal="timeout" from="PassiveResourceTimer" to="." method="_on_passive_resource_timer_timeout"]
+[connection signal="go_next_day" from="CanvasLayer/Control" to="." method="_on_control_go_next_day"]
+[connection signal="go_to_screen" from="CanvasLayer/Control" to="." method="_on_control_go_to_screen"]
 [connection signal="ui_make_building" from="CanvasLayer/Control" to="." method="_on_control_ui_make_building"]
+[connection signal="input_event" from="FlyingFernsBg/JellyPerson" to="." method="_on_jelly_person_input_event"]

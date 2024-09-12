@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://y6s5jwvqwwoo"]
+[gd_scene load_steps=9 format=3 uid="uid://iebop4csb30p"]
 
-[ext_resource type="Script" path="res://building.gd" id="1_vmfch"]
-[ext_resource type="Texture2D" uid="uid://8ctet46vcnu3" path="res://Assets/Building/farm_pod_combined.png" id="2_55tew"]
+[ext_resource type="Script" path="res://building.gd" id="1_ghp3q"]
+[ext_resource type="Texture2D" uid="uid://b8lxs5aw7s15r" path="res://Assets/Building/comm_pod_combined.png" id="2_d1qbk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k16vb"]
+radius = 208.614
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_irj4l"]
+radius = 300.027
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjih8"]
-radius = 173.566
+radius = 171.292
 
 [sub_resource type="Animation" id="Animation_ujjlf"]
 length = 0.001
@@ -44,14 +50,31 @@ _data = {
 }
 
 [node name="Building" type="Node2D"]
-script = ExtResource("1_vmfch")
-building_name = "Science"
-building_texture = ExtResource("2_55tew")
+script = ExtResource("1_ghp3q")
+building_name = "Comms"
+building_type = 1
+building_texture = ExtResource("2_d1qbk")
+building_process_time = 0.5
+resource_produced = 3
+
+[node name="SnapTo" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 65536
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnapTo"]
+shape = SubResource("CircleShape2D_k16vb")
+
+[node name="WorkerAssociation" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorkerAssociation"]
+shape = SubResource("CircleShape2D_irj4l")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
 
 [node name="BuildingSprite" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("2_55tew")
+texture = ExtResource("2_d1qbk")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]

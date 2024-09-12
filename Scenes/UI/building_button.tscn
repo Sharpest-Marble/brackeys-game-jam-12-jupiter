@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4gy5qh40nj7s"]
 
-[ext_resource type="Script" path="res://Scenes/building_button.gd" id="1_ro0xm"]
-[ext_resource type="PackedScene" uid="uid://ifvmrblfw5e4" path="res://Scenes/science_building.tscn" id="2_7dfo6"]
+[ext_resource type="Script" path="res://Scenes/UI/building_button.gd" id="1_ro0xm"]
+[ext_resource type="PackedScene" uid="uid://ifvmrblfw5e4" path="res://Scenes/Buildings/science_building.tscn" id="2_7dfo6"]
 
 [node name="Building Button" type="Control"]
 layout_mode = 3
@@ -23,15 +23,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 6
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 4.0
+size_flags_stretch_ratio = 5.0
 icon_alignment = 1
 expand_icon = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+[node name="CostsLabel" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

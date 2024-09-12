@@ -1,7 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://gq3jijttpahv"]
+[gd_scene load_steps=9 format=3 uid="uid://y6s5jwvqwwoo"]
 
-[ext_resource type="Script" path="res://building.gd" id="1_gcx0c"]
-[ext_resource type="Texture2D" uid="uid://dlupuwsjp0qa7" path="res://Assets/Building/mining_pod_combined.png" id="2_plxv1"]
+[ext_resource type="Script" path="res://building.gd" id="1_i2ajq"]
+[ext_resource type="Texture2D" uid="uid://8ctet46vcnu3" path="res://Assets/Building/farm_pod_combined.png" id="2_ww0oh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1f4a2"]
+radius = 208.614
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_guhjn"]
+radius = 300.027
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjih8"]
 radius = 173.566
@@ -44,14 +50,30 @@ _data = {
 }
 
 [node name="Building" type="Node2D"]
-script = ExtResource("1_gcx0c")
-building_name = "Mine"
-building_texture = ExtResource("2_plxv1")
+script = ExtResource("1_i2ajq")
+building_name = "Farm"
+building_type = 2
+building_texture = ExtResource("2_ww0oh")
+building_process_time = 1.0
+resource_produced = 2
+
+[node name="SnapTo" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 65536
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnapTo"]
+shape = SubResource("CircleShape2D_1f4a2")
+
+[node name="WorkerAssociation" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorkerAssociation"]
+shape = SubResource("CircleShape2D_guhjn")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="BuildingSprite" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("2_plxv1")
+texture = ExtResource("2_ww0oh")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]

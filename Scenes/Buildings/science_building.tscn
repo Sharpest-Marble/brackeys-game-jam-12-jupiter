@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://ifvmrblfw5e4"]
+
+[ext_resource type="Script" path="res://building.gd" id="1_it4i5"]
+[ext_resource type="Texture2D" uid="uid://i5tl57jxosbe" path="res://Assets/Building/science_pod_combined.png" id="2_r4ifi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bfq60"]
+radius = 208.614
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqp4e"]
+radius = 300.027
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjih8"]
+radius = 173.566
+
+[sub_resource type="Animation" id="Animation_ujjlf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/BuildingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3528s"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/BuildingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6frf"]
+_data = {
+"RESET": SubResource("Animation_ujjlf"),
+"new_animation": SubResource("Animation_3528s")
+}
+
+[node name="Building" type="Node2D"]
+script = ExtResource("1_it4i5")
+building_name = "Science"
+building_type = 3
+building_texture = ExtResource("2_r4ifi")
+resource_qty = 5
+
+[node name="SnapTo" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 65536
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnapTo"]
+shape = SubResource("CircleShape2D_bfq60")
+
+[node name="WorkerAssociation" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorkerAssociation"]
+shape = SubResource("CircleShape2D_tqp4e")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="BuildingSprite" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("2_r4ifi")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_xjih8")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m6frf")
+}
+autoplay = "new_animation"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

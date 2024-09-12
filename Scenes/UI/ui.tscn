@@ -1,0 +1,519 @@
+[gd_scene load_steps=28 format=3 uid="uid://c4p42tc6wft0k"]
+
+[ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_y8sfh"]
+[ext_resource type="PackedScene" uid="uid://dn6fi0tof8bgp" path="res://Scenes/UI/pause_menu.tscn" id="2_bnurd"]
+[ext_resource type="PackedScene" uid="uid://iebop4csb30p" path="res://Scenes/Buildings/comm_building.tscn" id="3_5y0mu"]
+[ext_resource type="PackedScene" uid="uid://c4gy5qh40nj7s" path="res://Scenes/UI/building_button.tscn" id="3_p4vy7"]
+[ext_resource type="Texture2D" uid="uid://5gjnm6whivuy" path="res://Assets/UI/comm_pod_ICON.png" id="4_oftxy"]
+[ext_resource type="PackedScene" uid="uid://y6s5jwvqwwoo" path="res://Scenes/Buildings/farm_building.tscn" id="5_86ufr"]
+[ext_resource type="Texture2D" uid="uid://t6hvkdkxapfw" path="res://Assets/UI/farm_pod_ICON.png" id="6_twn7j"]
+[ext_resource type="PackedScene" uid="uid://gq3jijttpahv" path="res://Scenes/Buildings/mine_building.tscn" id="7_6yww2"]
+[ext_resource type="Texture2D" uid="uid://bf2hk71rmcryw" path="res://Assets/UI/mining_pod_ICON.png" id="8_shy0h"]
+[ext_resource type="Texture2D" uid="uid://cr6poew7xn0xf" path="res://Assets/UI/science_pod_ICON.png" id="9_2vlhg"]
+[ext_resource type="Texture2D" uid="uid://bfi4sww7tk0fk" path="res://Assets/Backgrounds/Upwelling_ICON.png" id="10_k6acl"]
+[ext_resource type="Texture2D" uid="uid://8pgvovlnw516" path="res://Assets/Backgrounds/Meeting_Room_ICON.png" id="11_r3wnu"]
+[ext_resource type="Texture2D" uid="uid://bj611gw0ece52" path="res://Assets/Backgrounds/Southern_Wall_ICON.png" id="12_mosjr"]
+[ext_resource type="Texture2D" uid="uid://sm7qq26n572p" path="res://Assets/Backgrounds/Flying_Ferns_ICON.png" id="13_4hupv"]
+[ext_resource type="Texture2D" uid="uid://c5ofskt7oewoa" path="res://Assets/Backgrounds/Journey_Down_ICON.png" id="14_f65lj"]
+[ext_resource type="Texture2D" uid="uid://ki8k8c2dw1us" path="res://Assets/Backgrounds/Metal_Divers_ICON.png" id="15_vfe0v"]
+[ext_resource type="Texture2D" uid="uid://dkmynf5y5m0ke" path="res://Assets/UI/next_day_ICON.png" id="16_2dykn"]
+[ext_resource type="Texture2D" uid="uid://dfyjajxmiisy" path="res://Assets/UI/science_ICON.png" id="16_j1r4i"]
+[ext_resource type="Texture2D" uid="uid://btjekn6tdlkj5" path="res://Assets/UI/Time_Remaining_ICON.png" id="16_om6kn"]
+[ext_resource type="Texture2D" uid="uid://cshbn4eypwuoo" path="res://Assets/UI/core_metal_ICON.png" id="17_oegnq"]
+[ext_resource type="Texture2D" uid="uid://cv88i6vx36gpl" path="res://Assets/UI/pause_ICON.png" id="17_vhh8u"]
+[ext_resource type="Texture2D" uid="uid://bg76s0ko2piow" path="res://Assets/UI/plant_ICON.png" id="18_foccf"]
+[ext_resource type="Texture2D" uid="uid://txqjbduyh7gk" path="res://Assets/UI/comm_ICON.png" id="19_fq521"]
+
+[sub_resource type="Theme" id="Theme_rmi2w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a2iki"]
+font_size = 24
+
+[sub_resource type="InputEventKey" id="InputEventKey_uef67"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_l6n6q"]
+events = [SubResource("InputEventKey_uef67")]
+
+[node name="Control" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = SubResource("Theme_rmi2w")
+script = ExtResource("1_y8sfh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left Menu" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer/Left Menu"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Buildings Label" type="Label" parent="HBoxContainer/Left Menu/PanelContainer2"]
+layout_mode = 2
+text = "Buildings"
+label_settings = SubResource("LabelSettings_a2iki")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/Left Menu"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 15.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Left Menu/PanelContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="farm_button" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer2" instance=ExtResource("3_p4vy7")]
+layout_mode = 2
+building = ExtResource("5_86ufr")
+resource_cost = Array[int]([4, 0, 0, 6])
+building_texture = ExtResource("6_twn7j")
+button_text = "Farm Pod"
+button_name = "farm_building_button"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="comms_button" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer" instance=ExtResource("3_p4vy7")]
+layout_mode = 2
+building = ExtResource("3_5y0mu")
+resource_cost = Array[int]([2, 1, 15, 0])
+building_texture = ExtResource("4_oftxy")
+button_text = "Comms Array"
+button_name = "Comms_building_button"
+
+[node name="MarginContainer4" type="MarginContainer" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="science_button" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer4" instance=ExtResource("3_p4vy7")]
+layout_mode = 2
+resource_cost = Array[int]([0, 1, 30, 20])
+building_texture = ExtResource("9_2vlhg")
+button_text = "Research Pod"
+button_name = "science_building_button"
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="mine_button" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer3" instance=ExtResource("3_p4vy7")]
+layout_mode = 2
+building = ExtResource("7_6yww2")
+resource_cost = Array[int]([30, 0, 30, 30])
+building_texture = ExtResource("8_shy0h")
+button_text = "Metalic Xenon Refinery"
+button_name = "mine_building_button"
+
+[node name="PanelContainer3" type="PanelContainer" parent="HBoxContainer/Left Menu"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Left Menu/PanelContainer3"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/Left Menu/PanelContainer3/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="flying_ferns_button" type="Button" parent="HBoxContainer/Left Menu/PanelContainer3/ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "
+Grow food for your people and Train Farmers"
+text = "The Flying Ferns
+"
+icon = ExtResource("13_4hupv")
+autowrap_mode = 2
+
+[node name="southern_wall_button" type="Button" parent="HBoxContainer/Left Menu/PanelContainer3/ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "
+Build the ship and train communicators"
+text = "Southern Wall Border
+"
+icon = ExtResource("12_mosjr")
+autowrap_mode = 2
+
+[node name="upwelling" type="Button" parent="HBoxContainer/Left Menu/PanelContainer3/ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "Build the ark and recruite new people"
+text = "Upwelling
+"
+icon = ExtResource("10_k6acl")
+autowrap_mode = 2
+
+[node name="meeting_room_button" type="Button" parent="HBoxContainer/Left Menu/PanelContainer3/ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "
+Negotiate passage to a safe relm"
+text = "Embassy of the People Across the Wall
+"
+icon = ExtResource("11_r3wnu")
+autowrap_mode = 2
+
+[node name="journey_down_button" type="Button" parent="HBoxContainer/Left Menu/PanelContainer3/ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "
+Train Scientists and Study the storm"
+text = "Tower to the Underrealm
+"
+icon = ExtResource("14_f65lj")
+autowrap_mode = 2
+
+[node name="mines_button" type="Button" parent="HBoxContainer/Left Menu/PanelContainer3/ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "
+Trade for metallic xenon and train engineers"
+text = "Metal Divers
+"
+icon = ExtResource("15_vfe0v")
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TopMenu" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="ScienceIcon" type="TextureRect" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("16_j1r4i")
+stretch_mode = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScienceResourceLabel" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer5" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScienceDelta" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer/MarginContainer5"]
+layout_mode = 2
+
+[node name="MetalIcon" type="TextureRect" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("17_oegnq")
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="MetalResourceLabel" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer6" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="MetalDelta" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer/MarginContainer6"]
+layout_mode = 2
+
+[node name="FoodIcon" type="TextureRect" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("18_foccf")
+stretch_mode = 4
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="FoodResourceLabel" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer/MarginContainer3"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer7" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="FoodDelta" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer/MarginContainer7"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="CommIcon" type="TextureRect" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_fq521")
+stretch_mode = 4
+
+[node name="MarginContainer4" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="CommResourceLabel" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer/MarginContainer4"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer8" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="CommDelta" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/HBoxContainer/MarginContainer8"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Ship:"
+uppercase = true
+
+[node name="ShipProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+size_flags_stretch_ratio = 2.88
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/VBoxContainer/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+text = "Ark: "
+uppercase = true
+
+[node name="ArkProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+size_flags_stretch_ratio = 2.88
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 21.0
+mouse_filter = 1
+
+[node name="Right Menu" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Game Settings" type="PanelContainer" parent="HBoxContainer/Right Menu"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Right Menu/Game Settings"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/Right Menu/Game Settings/HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Right Menu/Game Settings/HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Right Menu/Game Settings/HBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("16_om6kn")
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Right Menu/Game Settings/HBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TimeTillNextDayLabel" type="Label" parent="HBoxContainer/Right Menu/Game Settings/HBoxContainer/PanelContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextDayButton" type="Button" parent="HBoxContainer/Right Menu/Game Settings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next Day"
+icon = ExtResource("16_2dykn")
+
+[node name="PauseMenuButton" type="Button" parent="HBoxContainer/Right Menu/Game Settings/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Pause Menu"
+shortcut = SubResource("Shortcut_l6n6q")
+text = "Pause (ESC)"
+icon = ExtResource("17_vhh8u")
+
+[node name="Control" type="Control" parent="HBoxContainer/Right Menu"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+mouse_filter = 1
+
+[node name="pause_menu" parent="." instance=ExtResource("2_bnurd")]
+layout_mode = 1
+
+[connection signal="button_make_building" from="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer2/farm_button" to="." method="_on_building_button_2_button_make_building"]
+[connection signal="button_make_building" from="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer/comms_button" to="." method="_on_building_button_button_make_building"]
+[connection signal="button_make_building" from="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer4/science_button" to="." method="_on_building_button_4_button_make_building"]
+[connection signal="button_make_building" from="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer3/mine_button" to="." method="_on_building_button_3_button_make_building"]
+[connection signal="pressed" from="HBoxContainer/Left Menu/PanelContainer3/ScrollContainer/GridContainer/flying_ferns_button" to="." method="_on_flying_ferns_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Left Menu/PanelContainer3/ScrollContainer/GridContainer/southern_wall_button" to="." method="_on_southern_wall_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Left Menu/PanelContainer3/ScrollContainer/GridContainer/upwelling" to="." method="_on_homeland_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Left Menu/PanelContainer3/ScrollContainer/GridContainer/meeting_room_button" to="." method="_on_meeting_room_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Left Menu/PanelContainer3/ScrollContainer/GridContainer/journey_down_button" to="." method="_on_journey_down_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Left Menu/PanelContainer3/ScrollContainer/GridContainer/mines_button" to="." method="_on_mines_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Right Menu/Game Settings/HBoxContainer/NextDayButton" to="." method="_on_next_day_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Right Menu/Game Settings/HBoxContainer/PauseMenuButton" to="." method="_on_button_pressed"]
