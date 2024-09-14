@@ -128,7 +128,10 @@ func place_building():
 
 func _on_timer_timeout() -> void:
 	if building_type in range(0,4):
-		produced_resource.emit(resource_produced,resource_qty * (1 + worker_efficiency)* current_workers)
+		print("Adding resource %d"%resource_produced)
+		var resource_qty_sent = resource_qty * (1 + worker_efficiency*current_workers)
+		print("QTY: %0.2f"% resource_qty_sent)
+		produced_resource.emit(resource_produced,resource_qty_sent)
 	if building_type == building_types.None:
 		negotiate.emit(current_workers*worker_efficiency, current_workers*comm_cost)
 	#print(name + " timer timeout")

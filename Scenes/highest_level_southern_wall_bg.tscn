@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3h2q0j0mxvkr"]
+
+[ext_resource type="Texture2D" uid="uid://bko4i2png4jt6" path="res://Assets/Backgrounds/highest_level_southern_wall_bg.png" id="1_wa8v3"]
+[ext_resource type="PackedScene" uid="uid://ctg0v875xohnf" path="res://Scenes/building_point.tscn" id="2_cyhi5"]
+
+[node name="HighestLevelSouthernWallBg" type="Sprite2D"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("1_wa8v3")
+
+[node name="comms_1" parent="." instance=ExtResource("2_cyhi5")]
+position = Vector2(138, 445)
+collision_layer = 0
+collision_mask = 0
+building_type = 1
+layer_active = 19
+
+[node name="comms_2" parent="." instance=ExtResource("2_cyhi5")]
+position = Vector2(732, 445)
+collision_layer = 0
+collision_mask = 0
+building_type = 1
+
+[node name="comms_3" parent="." instance=ExtResource("2_cyhi5")]
+position = Vector2(624, 299)
+collision_layer = 0
+collision_mask = 0
+building_type = 1
+
+[node name="comms_4" parent="." instance=ExtResource("2_cyhi5")]
+position = Vector2(53, 289)
+collision_layer = 0
+collision_mask = 0
+building_type = 1
+
+[node name="comms_5" parent="." instance=ExtResource("2_cyhi5")]
+position = Vector2(-237, 253)
+collision_layer = 0
+collision_mask = 0
+building_type = 1
+
+[node name="comms_6" parent="." instance=ExtResource("2_cyhi5")]
+position = Vector2(-365, 404)
+collision_layer = 0
+collision_mask = 0
+building_type = 1
+
+[node name="EndPodShip" parent="." instance=ExtResource("2_cyhi5")]
+position = Vector2(356, -150)
+rotation = 0.0411265
+building_type = 5
+
+[node name="Ship5" parent="." instance=ExtResource("2_cyhi5")]
+position = Vector2(202, -150)
+rotation = 0.0411265
+building_type = 6
+
+[node name="Ship6" parent="." instance=ExtResource("2_cyhi5")]
+position = Vector2(48, -150)
+rotation = 0.0411265
+building_type = 6
+
+[node name="Ship8" parent="." instance=ExtResource("2_cyhi5")]
+position = Vector2(-106, -150)
+rotation = 0.0411265
+building_type = 6
+
+[node name="Ship7" parent="." instance=ExtResource("2_cyhi5")]
+position = Vector2(-260, -150)
+rotation = 0.0411265
+building_type = 7

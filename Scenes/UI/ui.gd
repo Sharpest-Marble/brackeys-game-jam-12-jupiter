@@ -1,9 +1,10 @@
 extends Control
 @onready var pause_menu: Control = $pause_menu
 @onready var grid_container: GridContainer = $"HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer"
+@onready var intro_menu: IntroMenu = $IntroMenu
 
 signal ui_make_building(building, resource_cost:Array, resources_produced,resource_timer)
-
+signal restart_game
 enum screens {
 	FLYING_FERNS,
 	SOUTHERN_WALL,
@@ -90,3 +91,7 @@ func _on_dispense_workers_pressed() -> void:
 
 func _on_worker_spawn_button_spawn_worker(resource_costs: Array[int]) -> void:
 	spawn_new_workers.emit(resource_costs)
+
+
+func _on_pause_menu_restart_game() -> void:
+	restart_game.emit()

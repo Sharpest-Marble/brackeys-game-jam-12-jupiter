@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c4p42tc6wft0k"]
+[gd_scene load_steps=41 format=3 uid="uid://c4p42tc6wft0k"]
 
 [ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_y8sfh"]
 [ext_resource type="PackedScene" uid="uid://dn6fi0tof8bgp" path="res://Scenes/UI/pause_menu.tscn" id="2_bnurd"]
@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://bx0akxld6a4yg" path="res://Scenes/EndgameBuildings/ship_reactor.tscn" id="12_y6lha"]
 [ext_resource type="Texture2D" uid="uid://sm7qq26n572p" path="res://Assets/Backgrounds/Flying_Ferns_ICON.png" id="13_4hupv"]
 [ext_resource type="Texture2D" uid="uid://bo0ngabecj8wc" path="res://Assets/Endgame Buildings/ship_reactor_room_ICON.png" id="13_td3pw"]
-[ext_resource type="Texture2D" uid="uid://c5ofskt7oewoa" path="res://Assets/Backgrounds/Journey_Down_ICON.png" id="14_f65lj"]
 [ext_resource type="PackedScene" uid="uid://fxhugkxgux0s" path="res://Scenes/EndgameBuildings/ship_engine.tscn" id="14_krff3"]
 [ext_resource type="Texture2D" uid="uid://bgo4t7f56oko0" path="res://Assets/Endgame Buildings/engine_block_ICON.png" id="15_4gfda"]
 [ext_resource type="Texture2D" uid="uid://ki8k8c2dw1us" path="res://Assets/Backgrounds/Metal_Divers_ICON.png" id="15_vfe0v"]
@@ -35,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://dmoehn3g3ddk0" path="res://Assets/UI/worker_out_of_worker_transport_shuttle_ICON.png" id="24_2ynrw"]
 [ext_resource type="Script" path="res://Scenes/UI/worker_spawn_button.gd" id="24_68smt"]
 [ext_resource type="Texture2D" uid="uid://cbg1rwu1p40ky" path="res://Assets/UI/jelly_person_spawn_ICON.png" id="25_bsosv"]
+[ext_resource type="PackedScene" uid="uid://c4lhuk0avvfwa" path="res://Scenes/UI/intro_menu.tscn" id="35_yaxgr"]
 
 [sub_resource type="Theme" id="Theme_rmi2w"]
 
@@ -46,6 +46,9 @@ keycode = 4194305
 
 [sub_resource type="Shortcut" id="Shortcut_l6n6q"]
 events = [SubResource("InputEventKey_uef67")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6xgkc"]
+load_path = "res://.godot/imported/Journey_Down_ICON.png-1714862e679f299a8b0c0d3003ad8940.ctex"
 
 [node name="Control" type="Control"]
 process_mode = 3
@@ -129,7 +132,7 @@ theme_override_constants/margin_bottom = 8
 [node name="comms_button" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer" instance=ExtResource("3_p4vy7")]
 layout_mode = 2
 building = ExtResource("3_5y0mu")
-resource_cost = Array[int]([2, 6, 30, 0])
+resource_cost = Array[int]([2, 3, 30, 0])
 building_texture = ExtResource("4_oftxy")
 button_text = "Comms Array"
 button_name = "Comms_building_button"
@@ -273,7 +276,7 @@ layout_mode = 2
 building = ExtResource("16_tu3ix")
 resource_cost = Array[int]([100, 100, 1000, 100])
 building_texture = ExtResource("17_b0170")
-button_text = "Hibernation Chamber"
+button_text = "Ark"
 button_name = "hibernation_button"
 building_type = 8
 resources_produced = 2
@@ -461,6 +464,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
 size_flags_stretch_ratio = 2.0
+max_value = 70.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -473,6 +477,7 @@ uppercase = true
 [node name="NegotiatePassageBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+max_value = 30.0
 
 [node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/TopMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -667,7 +672,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "
 Negotiate passage to a safe relm"
-text = "Embassy of the People Across the Wall
+text = "Embassy
 Negotiate Passage"
 icon = ExtResource("11_r3wnu")
 autowrap_mode = 2
@@ -690,7 +695,7 @@ tooltip_text = "
 Train Scientists and Study the storm"
 text = "Tower to the Underrealm
 Research the Storm"
-icon = ExtResource("14_f65lj")
+icon = SubResource("CompressedTexture2D_6xgkc")
 autowrap_mode = 2
 
 [node name="mines_button" type="Button" parent="HBoxContainer/Right Menu/PanelContainer3/ScrollContainer/GridContainer"]
@@ -713,6 +718,9 @@ mouse_filter = 2
 [node name="pause_menu" parent="." instance=ExtResource("2_bnurd")]
 layout_mode = 1
 
+[node name="IntroMenu" parent="." instance=ExtResource("35_yaxgr")]
+layout_mode = 1
+
 [connection signal="button_make_building" from="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer2/farm_button" to="." method="_on_building_button_2_button_make_building"]
 [connection signal="button_make_building" from="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer/comms_button" to="." method="_on_building_button_button_make_building"]
 [connection signal="button_make_building" from="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer4/science_button" to="." method="_on_building_button_4_button_make_building"]
@@ -733,3 +741,5 @@ layout_mode = 1
 [connection signal="pressed" from="HBoxContainer/Right Menu/PanelContainer3/ScrollContainer/GridContainer/upwelling" to="." method="_on_homeland_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Right Menu/PanelContainer3/ScrollContainer/GridContainer/journey_down_button" to="." method="_on_journey_down_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Right Menu/PanelContainer3/ScrollContainer/GridContainer/mines_button" to="." method="_on_mines_button_pressed"]
+[connection signal="display_reference_sheets" from="pause_menu" to="IntroMenu" method="show_reference_pages"]
+[connection signal="restart_game" from="pause_menu" to="." method="_on_pause_menu_restart_game"]

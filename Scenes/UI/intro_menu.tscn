@@ -1,12 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4lhuk0avvfwa"]
+[gd_scene load_steps=35 format=3 uid="uid://c4lhuk0avvfwa"]
 
 [ext_resource type="Script" path="res://Scenes/UI/intro_menu.gd" id="1_t0ggv"]
 [ext_resource type="Texture2D" uid="uid://ca82ch2r78bhy" path="res://Assets/Building/farm_pod.png" id="2_1evju"]
+[ext_resource type="Texture2D" uid="uid://dj5nb72m08cgt" path="res://Assets/UI/example_ship.png" id="2_5iqoi"]
+[ext_resource type="StyleBox" uid="uid://dmd62vft5lg5k" path="res://Scenes/UI/intro_menu.tres" id="2_c2qqv"]
+[ext_resource type="Texture2D" uid="uid://clgde5snbwqa4" path="res://Assets/UI/meeting_room_example.png" id="3_ffhdk"]
 [ext_resource type="Texture2D" uid="uid://fywl70dq2du0" path="res://Assets/Building/comm_pod_1.png" id="3_m67i6"]
 [ext_resource type="Texture2D" uid="uid://dclxtuxwxyacv" path="res://Assets/Building/science_pod_1.png" id="4_g78w5"]
 [ext_resource type="Texture2D" uid="uid://c3kx5jb1ve5o8" path="res://Assets/Building/mining_pod_1.png" id="5_332xq"]
+[ext_resource type="Texture2D" uid="uid://bunb8h4ijcxcs" path="res://Assets/UI/upwelling_example.png" id="5_idilm"]
+[ext_resource type="Texture2D" uid="uid://sm7qq26n572p" path="res://Assets/Backgrounds/Flying_Ferns_ICON.png" id="5_ih8pa"]
 [ext_resource type="Texture2D" uid="uid://cg6fhe04y6rc3" path="res://Assets/UI/worker_into_worker_transport_shuttle_ICON.png" id="6_d0m7u"]
 [ext_resource type="Texture2D" uid="uid://dmoehn3g3ddk0" path="res://Assets/UI/worker_out_of_worker_transport_shuttle_ICON.png" id="7_cba7h"]
+[ext_resource type="Texture2D" uid="uid://dnwdabdsq7x0d" path="res://Assets/Backgrounds/Journey_Down_ICON.png" id="9_2rhj6"]
+[ext_resource type="Texture2D" uid="uid://bj611gw0ece52" path="res://Assets/Backgrounds/Southern_Wall_ICON.png" id="9_ib81i"]
+[ext_resource type="Texture2D" uid="uid://ki8k8c2dw1us" path="res://Assets/Backgrounds/Metal_Divers_ICON.png" id="11_r0psj"]
+[ext_resource type="Texture2D" uid="uid://bp81q6cal081j" path="res://Assets/Endgame Buildings/end_pod.png" id="12_2krfl"]
+[ext_resource type="Texture2D" uid="uid://dlh2wp57s50uq" path="res://Assets/Endgame Buildings/ship_reactor_room.png" id="13_c7sjf"]
+[ext_resource type="Texture2D" uid="uid://dgexaxw3jfjwe" path="res://Assets/Endgame Buildings/engine_block.png" id="14_66oqk"]
+[ext_resource type="Texture2D" uid="uid://54711isu57t0" path="res://Assets/Endgame Buildings/hibernation_chamber_ICON.png" id="15_270kg"]
+[ext_resource type="Texture2D" uid="uid://c76rw216qahtt" path="res://Assets/Endgame Buildings/worker_transport_shuttle.png" id="16_voxdm"]
+[ext_resource type="Texture2D" uid="uid://cbg1rwu1p40ky" path="res://Assets/UI/jelly_person_spawn_ICON.png" id="17_cjudu"]
+[ext_resource type="Texture2D" uid="uid://bfi4sww7tk0fk" path="res://Assets/Backgrounds/Upwelling_ICON.png" id="18_gpkaw"]
+[ext_resource type="Texture2D" uid="uid://cjgby0trqals6" path="res://Assets/UI/mouse_icons/left_click_icon.png" id="20_1b31v"]
+[ext_resource type="Texture2D" uid="uid://4fn34pr41g57" path="res://Assets/UI/mouse_icons/left_click_drag_icon.png" id="21_txgg2"]
+[ext_resource type="Texture2D" uid="uid://bcrnpmgu6sa0x" path="res://Assets/UI/mouse_icons/right_click_icon.png" id="22_os7b3"]
+[ext_resource type="Texture2D" uid="uid://p10xfx3p04fi" path="res://Assets/Character/jelly_outline_selected.png" id="23_iycmt"]
+[ext_resource type="Texture2D" uid="uid://dfyjajxmiisy" path="res://Assets/UI/science_ICON.png" id="24_sroe6"]
+[ext_resource type="Texture2D" uid="uid://cshbn4eypwuoo" path="res://Assets/UI/core_metal_ICON.png" id="25_b7cr7"]
+[ext_resource type="Texture2D" uid="uid://bg76s0ko2piow" path="res://Assets/UI/plant_ICON.png" id="26_ulpr2"]
+[ext_resource type="Texture2D" uid="uid://txqjbduyh7gk" path="res://Assets/UI/comm_ICON.png" id="27_usp1s"]
+[ext_resource type="Texture2D" uid="uid://btjekn6tdlkj5" path="res://Assets/UI/Time_Remaining_ICON.png" id="28_h6ey7"]
+[ext_resource type="Texture2D" uid="uid://dkmynf5y5m0ke" path="res://Assets/UI/next_day_ICON.png" id="29_tpssp"]
+[ext_resource type="Texture2D" uid="uid://cv88i6vx36gpl" path="res://Assets/UI/pause_ICON.png" id="30_2idaq"]
+[ext_resource type="Texture2D" uid="uid://dnbpgjbwhuwxv" path="res://Assets/UI/building_point_ICON.png" id="33_p6wwp"]
 
 [node name="IntroMenu" type="Control"]
 process_mode = 2
@@ -32,15 +59,40 @@ theme_override_constants/margin_bottom = 8
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("2_c2qqv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+[node name="Intro Title" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "The Storm of Centuries is Coming"
+horizontal_alignment = 1
+
+[node name="ReferenceTitle" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Building Reference"
+horizontal_alignment = 1
+
+[node name="WorkerReferenceTitle" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Worker Reference"
+horizontal_alignment = 1
+
+[node name="IconReferenceTitle" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Icon Reference"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
@@ -54,98 +106,143 @@ size_flags_horizontal = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.66
+size_flags_stretch_ratio = 4.56
 
-[node name="Page1" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 9.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Page1" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 theme_override_font_sizes/font_size = 30
-text = "Our home in the planet Jupiter has enjoyed centuries of prosperity. 
-
-We have, for hundreds of years, lived in a peaceful island of atmospheric stability. We thrived, building wonderous floating cities, soaring farms, and speaking the language of triangles, squares, and circles to each other. We studied little blue bottles, and this gave us new technology somehow.
-
-We even built a grand tower into the deep layer below. The forbidden layer, lit with deep purples, dusky greys, and violent reds. There, in the depths, we heard the Voice. It warned us of the consequences  of our ambition, our arrogance, and worst of all, our complacency.
-
-It told us that when we pierced into the land of the Metal Divers, we had set in motion something that could not be undone.
-
-The Storm of Centuries is coming. A great red hurricane, grander in size than our whole kingdom. It will last for five hundred years."
+text = "The Great Red Spot on Jupiter is about to form. Those who live there must prepare. You have 7 days to either build an Ark to weather the storm, or build a ship to escape it."
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Page2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Page2Vbox" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer"]
 visible = false
-custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+
+[node name="Page2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/Page2Vbox"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "Win Condition 1: Building a ship
+In the realm called \"The Southern Wall\", you must construct a ship. 
+The ship will look like this"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Page2Picture1" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/Page2Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_5iqoi")
+stretch_mode = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Page3" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 8.63
 theme_override_font_sizes/font_size = 30
-text = "Our people must prepare. We have our tools, and our scientists have found two ways that we may survive.
-
-The first way is the Way of Escape. We can build a ship in the Southern Wall, and negotiate passage with the beings on the other side.
-
-The second way is the Building of an Ark. We can build hibernation pods with enough strength and food to support our people for the 500 year long storm.
-
-Both of these options require us to build out our resource production to support the massive undertaking that will save us. We also must recruit to our cause, by spending food and our beautiful shape-based language to convince them.
-
-Whichever option we choose, we must move quickly. The storm is coming in 7 days."
+text = "Win Condition 1: Building a Ship
+In order to pass through the Southern Wall, you must also Negotiate Passage through the Embassy Realm. This is done by moving workers to that realm. "
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Page2_2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(300, 300)
+[node name="Page3Picture" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 9.0
+texture = ExtResource("3_ffhdk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Page3_3" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 5.0
 theme_override_font_sizes/font_size = 30
-text = "The Way of Escape is accomplished by achieving two goals: building a ship and negotiating passage.
-
-The ship consists of five buildings: 
-An engine block on the left
-3 reactor bays in the middle
-An end pod on the right
-
-Negotiating Passage requires us to send workers to the Embassy of the People Beyond the Wall. There, they will work tirelessly to turn our shape-language into safe passage. This requries huge amounts of communication, so be sure to invest in its production"
+text = "While there, they will fill the negotiation progress bar."
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Page2_3" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer"]
 visible = false
-custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+
+[node name="Page4" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 5.0
 theme_override_font_sizes/font_size = 30
-text = "The Building of an Ark is accomplished by building six Hibernation Chambers in the Upwelling room. These chambers are very expensive, and require huge supplies of food to keep our people alive in suspended animation for the 500 years the storm will rage."
+text = "Win Condition 2: Building the Ark
+You must construct six Arks in the realm called \"The Upwelling\". 
+The arks will look like this:"
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Page3" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Page4Picture1" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 9.0
+texture = ExtResource("5_idilm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BuildingReferenceHbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer"]
 visible = false
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Page4" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
-text = "We have four types of resource buildings:"
+text = "Resource Buildings:"
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Page3Grid" type="GridContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-visible = false
+[node name="Page4Grid" type="GridContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0
 columns = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -154,18 +251,18 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Farm Pod 
 Produces Food"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -173,30 +270,42 @@ texture = ExtResource("2_1evju")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Built in the Flying Ferns"
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Built in the 
+Flying Ferns
+"
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("5_ih8pa")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer2"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer2/VBoxContainer4"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer2/VBoxContainer4"]
 layout_mode = 2
 text = "Comms Array
 Produces Communication"
 horizontal_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer2/VBoxContainer4"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer2/VBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -204,30 +313,41 @@ texture = ExtResource("3_m67i6")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer2/VBoxContainer4"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer2/VBoxContainer4"]
 layout_mode = 2
-text = "Built at the Southern Wall"
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer2/VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+text = "Built in the 
+Southern Wall"
 horizontal_alignment = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer2/VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("9_ib81i")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer3"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer3/VBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer3/VBoxContainer2"]
 layout_mode = 2
 text = "Science Pod 
-Produces the little blue bottles"
+Produces Science"
 horizontal_alignment = 1
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer3/VBoxContainer2"]
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer3/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -235,12 +355,24 @@ texture = ExtResource("4_g78w5")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer3/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer3/VBoxContainer2"]
 layout_mode = 2
-text = "Built in the vortex at the Journey Down"
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer3/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Built in the 
+Journey Down
+"
 horizontal_alignment = 1
 
-[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer3/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("9_2rhj6")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -249,18 +381,18 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer4"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer4/VBoxContainer3"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer4/VBoxContainer3"]
 layout_mode = 2
 text = "Metallic Xenon Refinery
 Produces Metallic Xenon"
 horizontal_alignment = 1
 
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer4/VBoxContainer3"]
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer4/VBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -268,103 +400,799 @@ texture = ExtResource("5_332xq")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer4/VBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer4/VBoxContainer3"]
 layout_mode = 2
-text = "Built in the depths of the Metal Divers"
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer4/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+text = "Built in the 
+Metal Divers
+"
 horizontal_alignment = 1
 
-[node name="Page3_2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-visible = false
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer/Page4Grid/MarginContainer4/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("11_r0psj")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Page5" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
-text = "Each of these buildings is built in their own regions. The region for each building lists what can be built there."
+text = "End Game Buildings:"
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Page4" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Page5Grid" type="GridContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+columns = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "End Pod 
+Caps the Right End of the Ship"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("12_2krfl")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Built in the 
+Southern Wall"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("9_ib81i")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer2/VBoxContainer4"]
+layout_mode = 2
+text = "Comms Array
+Produces Communication"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer2/VBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("13_c7sjf")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer2/VBoxContainer4"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer2/VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+text = "Built in the 
+Southern Wall"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer2/VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("9_ib81i")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "Science Pod 
+Produces the little blue bottles"
+horizontal_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer3/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("14_66oqk")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer3/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer3/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Built in the 
+Southern Wall"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer3/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("9_ib81i")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer4/VBoxContainer3"]
+layout_mode = 2
+text = "Metallic Xenon Refinery
+Produces Metallic Xenon"
+horizontal_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer4/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("15_270kg")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer4/VBoxContainer3"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer4/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+text = "Built in the 
+Upwelling"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BuildingReferenceHbox/VBoxContainer2/Page5Grid/MarginContainer4/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("18_gpkaw")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="WorkerReferenceVbox" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer"]
 visible = false
-custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
-theme_override_font_sizes/font_size = 30
-text = "We can recruit workers with the \"Recruit Worker\" button in the top right. The new worker will exit the transport ship on the bottom right of the screen.
 
-Moving workers is done by selecting them with the Left Mouse Button, or by dragging a box around a group of workers. The selected workers can be moved with Right Mouse Button.
-
-We can improve the speed at which we generate resources by sending workers to the relevant buildings. After a brief training period, they will begin working. 
-
-If we are to follow the path of escape, and negotiate passage, we must send our workers to the Embassy of the People Accross the Wall. They will consume massive amounts of our language, but their participation is vital to the success of this plan.
-
-We also have to feed our workers. Each worker consumes 0.05 food per second, and if we ever run out, we all will die."
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Page5" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-visible = false
+[node name="Page4" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 3.0
 theme_override_font_sizes/font_size = 30
-text = "We also have a transport ship, which can be used to move workers between regions. Send workers to the transport ship, and click the icons below to embark/disembark them."
+text = "Worker Reference
+"
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Page5Icons" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-visible = false
+[node name="Page4Grid" type="GridContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
-size_flags_stretch_ratio = 7.0
+size_flags_stretch_ratio = 8.0
+columns = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Worker Transport"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("16_voxdm")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Present Everywhere
+Workers are recruited from here"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer2/VBoxContainer4"]
+layout_mode = 2
+text = "Recruite Worker Button"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer2/VBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("17_cjudu")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer2/VBoxContainer4"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer2/VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Spends resources to
+summon a new worker"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer3/VBoxContainer2"]
 layout_mode = 2
 text = "Embark Workers"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons/MarginContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("6_d0m7u")
-expand_mode = 4
-stretch_mode = 4
-
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons"]
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer3/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_d0m7u")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer3/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer3/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "All workers in the Worker Transport embark. 
+This means they disappear until they are disembarked"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid"]
+layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons/MarginContainer2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer5"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons/MarginContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer5/VBoxContainer2"]
 layout_mode = 2
 text = "Disembark Workers"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons/MarginContainer2/VBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer5/VBoxContainer2"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("7_cba7h")
-expand_mode = 4
+expand_mode = 2
 stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer5/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer5/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "All workers in the Worker Transport disembark. 
+This means they are summoned on screen"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer6" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer6/VBoxContainer3"]
+layout_mode = 2
+text = "Select worker with 
+Left Mouse Button"
+horizontal_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer6/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("20_1b31v")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer4/VBoxContainer3"]
+layout_mode = 2
+text = "Select multiple workers with 
+Left Mouse Button + Drag"
+horizontal_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer4/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("21_txgg2")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MarginContainer7" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer7/VBoxContainer3"]
+layout_mode = 2
+text = "Command selected workers 
+with Right Mouse Button"
+horizontal_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer7/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("22_os7b3")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MarginContainer8" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer8/VBoxContainer3"]
+layout_mode = 2
+text = "Selected workers are shrouded 
+with this symbol"
+horizontal_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/WorkerReferenceVbox/Page4Grid/MarginContainer8/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("23_iycmt")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ResourceIconsVbox" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="Page4" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Resources"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Page4Grid" type="GridContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+columns = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Science"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("24_sroe6")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Produced from Science Pods"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer2/VBoxContainer4"]
+layout_mode = 2
+text = "Metallic Xenon"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer2/VBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("25_b7cr7")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer2/VBoxContainer4"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer2/VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Produced from Xenon Refineries"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "Food"
+horizontal_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer3/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("26_ulpr2")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer3/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer3/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Produced from Farms
+If you run out, you lose"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer5/VBoxContainer2"]
+layout_mode = 2
+text = "Communication"
+horizontal_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer5/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("27_usp1s")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer5/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer5/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Produced from Comms Arrays
+Spent to Negotiate Passage"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer6" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer6/VBoxContainer3"]
+layout_mode = 2
+text = "Time Remaining Icon"
+horizontal_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer6/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("28_h6ey7")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer6/VBoxContainer3"]
+layout_mode = 2
+text = "Shows how near the Storm is"
+horizontal_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer4/VBoxContainer3"]
+layout_mode = 2
+text = "Next Day Button"
+horizontal_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer4/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("29_tpssp")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer4/VBoxContainer3"]
+layout_mode = 2
+text = "Press this to fast forward time 
+to the next day, gaining all resources 
+you would have gained waiting"
+horizontal_alignment = 1
+
+[node name="MarginContainer7" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer7/VBoxContainer3"]
+layout_mode = 2
+text = "Pause Menu"
+horizontal_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer7/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("30_2idaq")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer7/VBoxContainer3"]
+layout_mode = 2
+text = "Press this button to pause time.
+Has a shortcut: ESC"
+horizontal_alignment = 1
+
+[node name="MarginContainer8" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer8/VBoxContainer3"]
+layout_mode = 2
+text = "This symbol is where you can build buildings"
+horizontal_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/ResourceIconsVbox/Page4Grid/MarginContainer8/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("33_p6wwp")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -385,8 +1213,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Next"
 
-[node name="Button3" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="button_placeholder2" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button3" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Begin!"

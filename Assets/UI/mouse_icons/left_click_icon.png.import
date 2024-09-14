@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnwdabdsq7x0d"
-path="res://.godot/imported/Journey_Down_ICON.png-1714862e679f299a8b0c0d3003ad8940.ctex"
+uid="uid://cjgby0trqals6"
+path="res://.godot/imported/left_click_icon.png-03e30575a833817bd204955ceb4f7cf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Backgrounds/Journey_Down_ICON.png"
-dest_files=["res://.godot/imported/Journey_Down_ICON.png-1714862e679f299a8b0c0d3003ad8940.ctex"]
+source_file="res://Assets/UI/mouse_icons/left_click_icon.png"
+dest_files=["res://.godot/imported/left_click_icon.png-03e30575a833817bd204955ceb4f7cf0.ctex"]
 
 [params]
 

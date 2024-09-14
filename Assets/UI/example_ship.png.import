@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnwdabdsq7x0d"
-path="res://.godot/imported/Journey_Down_ICON.png-1714862e679f299a8b0c0d3003ad8940.ctex"
+uid="uid://dj5nb72m08cgt"
+path="res://.godot/imported/example_ship.png-b8963512dbb203b9ea9012d97fe5b916.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Backgrounds/Journey_Down_ICON.png"
-dest_files=["res://.godot/imported/Journey_Down_ICON.png-1714862e679f299a8b0c0d3003ad8940.ctex"]
+source_file="res://Assets/UI/example_ship.png"
+dest_files=["res://.godot/imported/example_ship.png-b8963512dbb203b9ea9012d97fe5b916.ctex"]
 
 [params]
 

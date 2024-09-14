@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0wfmyeihxv5h"]
+[gd_scene load_steps=4 format=3 uid="uid://d0wfmyeihxv5h"]
 
 [ext_resource type="Script" path="res://Scenes/UI/end_screen.gd" id="1_se0ht"]
+[ext_resource type="StyleBox" uid="uid://lskgisep0db5" path="res://Scenes/UI/win_stylebox.tres" id="2_m7y1g"]
+[ext_resource type="StyleBox" uid="uid://dvf6aqk4vu1ud" path="res://Scenes/UI/lose_stylebox.tres" id="3_6btsv"]
 
 [node name="IntroMenu" type="Control"]
 process_mode = 2
@@ -24,33 +26,35 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="VictoryPanelContainer" type="PanelContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_m7y1g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VictoryPanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VictoryPanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "Results of the Storm"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VictoryPanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Control" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/VictoryPanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VictoryPanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.66
 
-[node name="Victory" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Victory" type="Label" parent="MarginContainer/VictoryPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
@@ -58,17 +62,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 theme_override_font_sizes/font_size = 30
-text = "We have done it. We negotiated passage through the wall we once thought impenetrable, and built a ship more powerful than we once thought possible. We gathered our people into the great ship, and pierced the final barrier.
+text = "You did it! You escaped across the wall, into a brilliant new world!
 
-What lies on the other side of these howling winds? What strange clouds hold the civilisation kind enough to harbour us? Will our people adapt to a life among strangers? What of the homes we left behind?
+The behind you, the storm rages eternal. But your future lies ahead.
 
-The sombre air tastes different than that which you once knew well. Your grandchildren will grow up with this new air as their own, never knowing what it means to you.
-
-When the storm is over, will anything be left of the culture of those who left it five hundred years before?"
+Onward!"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Victory2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Victory2" type="Label" parent="MarginContainer/VictoryPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
@@ -76,36 +78,59 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 theme_override_font_sizes/font_size = 30
-text = "We have done it. We constructed an Ark of materials that were, until recently, completely unkown. We stored up food and processed it into a form that could last the five hundred years the storm will rage. All our people have been convinced to join in the Ark, and we prepare for the future.
+text = "You built a fortress that can survive the storm! Your people will sleep, safe in its walls, until the swirling clouds give way to the peace you once knew.
 
-As you settle into your hibernation cacoon, you feel apprehension seep into your tentacles. The storm rages fiercely, and churns the world you grew to love. Its wake will leave behind nothing resembling your home.
-
-When it is over, who knows what it will be like? Five hundred years is a long time. Practically an eternity. Likely, others will have made the storm-ravaged clouds theirs by the time you've awakened. Will they be willing to share their home with strangers from an alien time? Or will you be forced to choose between exile and war?
-
-It would be a bitter irony to have spent so much to perserve your culture and your home, only to have been cast out.
-
-With this, you fall into a sleep for five hundred years."
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Defeat1" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 10.0
-theme_override_font_sizes/font_size = 30
-text = "We have failed. The Storm came, and we were not ready. Why did we ignore it? Why did we dive into the Metal Realms? Why? Why? Why?
-
-You wish things had been different. A thousand mistakes, missed opportunities, stupid, STUPID decisions... How could you have done this?
-
-The Storm tears your world apart, and your last thoughts are spent worthlessly searching for anyone to blame. Anyone besides yourself.
 "
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Defeat2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VictoryPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button3" type="Button" parent="MarginContainer/VictoryPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "The End"
+
+[node name="Button4" type="Button" parent="MarginContainer/VictoryPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Try Again?"
+
+[node name="Control2" type="Control" parent="MarginContainer/VictoryPanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DefeatPanelContainer" type="PanelContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_6btsv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/DefeatPanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/DefeatPanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Results of the Storm"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/DefeatPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="MarginContainer/DefeatPanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/DefeatPanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.66
+
+[node name="Defeat1" type="Label" parent="MarginContainer/DefeatPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
@@ -113,21 +138,43 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 theme_override_font_sizes/font_size = 30
-text = "Wait, you ran out food? How did you manage that?"
+text = "This didn't end well. Your people could not ready themselves in time.
+
+If only there were a button you could press that would let you turn back time...."
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Defeat2" type="Label" parent="MarginContainer/DefeatPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+theme_override_font_sizes/font_size = 30
+text = "Your people ran out of food. If there were a way to do things differently, would you?"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/DefeatPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button3" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Button3" type="Button" parent="MarginContainer/DefeatPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "The End"
 
-[node name="Control2" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Button4" type="Button" parent="MarginContainer/DefeatPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Try Again?"
+
+[node name="Control2" type="Control" parent="MarginContainer/DefeatPanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="MarginContainer/VictoryPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="MarginContainer/VictoryPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="MarginContainer/DefeatPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="MarginContainer/DefeatPanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button4" to="." method="_on_button_4_pressed"]

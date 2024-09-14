@@ -1,6 +1,6 @@
 extends Node2D
 
-var cheat_mode = false
+var cheat_mode = true
 
 @onready var box_select: Node2D = $BoxSelect
 @onready var control: Control = $CanvasLayer/Control
@@ -96,8 +96,8 @@ var resources_array: Array[float] = [
 ]
 
 var passive_resource_gen: Array[float] = [
-	0.01,
-	0.01,
+	0.1,
+	0.1,
 	0.1,
 	0.1
 ]
@@ -114,6 +114,7 @@ var resource_deltas: Array[float] = [
 func _ready() -> void:
 	update_readouts()
 	spawn_jelly_person(Vector2(1500,900))
+	print(current_screen)
 	for level in len(screens_array):
 		for child in screens_array[level].get_children():
 			if child is JellyPerson:
@@ -235,8 +236,9 @@ func update_ship_victory_progress(resource_cost,building_type):
 func negotiate_passage(negotiation_strength, comm_cost):
 	total_negotiation_strength += negotiation_strength
 	total_negotiation_strength = min(30,total_negotiation_strength)
-	negotiation_rate_label.text = "+ %0.02f/s" % negotiation_strength
-	resources_array[resources.COMM] -= comm_cost
+	if total_negotiation_strength < 29.9:
+		negotiation_rate_label.text = "+ %0.02f/s" % negotiation_strength
+		resources_array[resources.COMM] -= comm_cost
 	
 #TODO: Add beginning and ending cutscenes + tutorial
 
@@ -260,10 +262,14 @@ func update_readouts():
 	if days_till_storm > 1:
 		storm_label = "\n" +str(days_till_storm) + " Days"
 	else:
+		if not $FinalDayMusic.playing:
+			$MusicPlayer.playing = false
+			$FinalDayMusic.play()
 		storm_label = "\nThe Final Day"
 	time_readout.text = "Next Day: " + str(int(time_till_next_day.time_left)) + " (s)" + storm_label
 
 func pay_for_building(resource_costs:Array[int] = [0,0,0,0],building_type:int = 1):
+	$SFXHolder/PlaceBuildingSFX.play()
 	if not cheat_mode:
 		for i in len(resources_array):
 			resources_array[i] -= resource_costs[i]
@@ -274,7 +280,8 @@ func add_resources(resource_type:int,resource_qty:int=1):
 func _on_control_ui_make_building(building: Variant, resource_cost, resources_produced,resource_timer) -> void:
 	if not cheat_mode:
 		for i in len(resource_cost):
-			if resource_cost[i] > resources_array[i]:
+			if resource_cost[i] > max(resources_array[i],0):
+				need_more_resources()
 				return
 	if buildings_container.get_children():
 		buildings_container.get_child(0).queue_free()
@@ -329,7 +336,7 @@ func update_progress():
 	negotiate_passage_progress_bar.set_value(total_negotiation_strength)
 	if ark_progress >= 90:
 		victory_condition_met = 1
-	if ship_progress >= 90:
+	if ship_progress >= 69 && total_negotiation_strength >= 29:
 		victory_condition_met = 0
 		
 func _on_control_go_next_day() -> void:
@@ -378,12 +385,30 @@ func _on_control_hoover_workers_pressed() -> void:
 	update_delta_delta[resources.FOOD] = worker_transport_shuttle.workers_in_shuttle * jelly_person_eat_rate
 	update_resouce_deltas(update_delta_delta)
 
+
+func need_more_resources():
+	var error_panel: PanelContainer = $CanvasLayer/PanelContainer
+	error_panel.set_self_modulate(Color(0,0,0,0))
+	error_panel.show()
+	var fade_tween = get_tree().create_tween()
+	fade_tween.tween_property(error_panel,"self_modulate",Color(1,1,1,1),0.1)
+	fade_tween.tween_property(error_panel,"self_modulate",Color(1,1,1,1),1)
+	fade_tween.tween_property(error_panel,"self_modulate",Color(0,0,0,0),0.5)
+	fade_tween.tween_property(error_panel,"visible",false,0.001)
+
+
 func _on_control_spawn_new_workers(resource_costs: Array[int]) -> void:
 	if not cheat_mode:
 		for i in resources_array.size():
-			if resources_array[i] < resource_costs[i]:
+			if max(resources_array[i],0) < resource_costs[i]:
+				need_more_resources()
 				return
 		for i in resources_array.size():
 			resources_array[i] -= resource_costs[i]
 	spawn_jelly_person(Vector2(1750,920))
 	
+
+
+func restart() -> void:
+	Globals.current_layer = 17
+	get_tree().reload_current_scene()
