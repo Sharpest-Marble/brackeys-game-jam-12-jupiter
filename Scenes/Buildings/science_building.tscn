@@ -55,6 +55,8 @@ building_name = "Science"
 building_type = 3
 building_texture = ExtResource("2_r4ifi")
 resource_qty = 5
+worker_efficiency = 0.02
+worked_by = 4
 
 [node name="SnapTo" type="Area2D" parent="."]
 collision_layer = 65536

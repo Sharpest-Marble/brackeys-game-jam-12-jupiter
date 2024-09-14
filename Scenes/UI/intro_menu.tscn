@@ -1,0 +1,400 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4lhuk0avvfwa"]
+
+[ext_resource type="Script" path="res://Scenes/UI/intro_menu.gd" id="1_t0ggv"]
+[ext_resource type="Texture2D" uid="uid://ca82ch2r78bhy" path="res://Assets/Building/farm_pod.png" id="2_1evju"]
+[ext_resource type="Texture2D" uid="uid://fywl70dq2du0" path="res://Assets/Building/comm_pod_1.png" id="3_m67i6"]
+[ext_resource type="Texture2D" uid="uid://dclxtuxwxyacv" path="res://Assets/Building/science_pod_1.png" id="4_g78w5"]
+[ext_resource type="Texture2D" uid="uid://c3kx5jb1ve5o8" path="res://Assets/Building/mining_pod_1.png" id="5_332xq"]
+[ext_resource type="Texture2D" uid="uid://cg6fhe04y6rc3" path="res://Assets/UI/worker_into_worker_transport_shuttle_ICON.png" id="6_d0m7u"]
+[ext_resource type="Texture2D" uid="uid://dmoehn3g3ddk0" path="res://Assets/UI/worker_out_of_worker_transport_shuttle_ICON.png" id="7_cba7h"]
+
+[node name="IntroMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t0ggv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "The Storm of Centuries is Coming"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.66
+
+[node name="Page1" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+theme_override_font_sizes/font_size = 30
+text = "Our home in the planet Jupiter has enjoyed centuries of prosperity. 
+
+We have, for hundreds of years, lived in a peaceful island of atmospheric stability. We thrived, building wonderous floating cities, soaring farms, and speaking the language of triangles, squares, and circles to each other. We studied little blue bottles, and this gave us new technology somehow.
+
+We even built a grand tower into the deep layer below. The forbidden layer, lit with deep purples, dusky greys, and violent reds. There, in the depths, we heard the Voice. It warned us of the consequences  of our ambition, our arrogance, and worst of all, our complacency.
+
+It told us that when we pierced into the land of the Metal Divers, we had set in motion something that could not be undone.
+
+The Storm of Centuries is coming. A great red hurricane, grander in size than our whole kingdom. It will last for five hundred years."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Page2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.63
+theme_override_font_sizes/font_size = 30
+text = "Our people must prepare. We have our tools, and our scientists have found two ways that we may survive.
+
+The first way is the Way of Escape. We can build a ship in the Southern Wall, and negotiate passage with the beings on the other side.
+
+The second way is the Building of an Ark. We can build hibernation pods with enough strength and food to support our people for the 500 year long storm.
+
+Both of these options require us to build out our resource production to support the massive undertaking that will save us. We also must recruit to our cause, by spending food and our beautiful shape-based language to convince them.
+
+Whichever option we choose, we must move quickly. The storm is coming in 7 days."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Page2_2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_font_sizes/font_size = 30
+text = "The Way of Escape is accomplished by achieving two goals: building a ship and negotiating passage.
+
+The ship consists of five buildings: 
+An engine block on the left
+3 reactor bays in the middle
+An end pod on the right
+
+Negotiating Passage requires us to send workers to the Embassy of the People Beyond the Wall. There, they will work tirelessly to turn our shape-language into safe passage. This requries huge amounts of communication, so be sure to invest in its production"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Page2_3" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_font_sizes/font_size = 30
+text = "The Building of an Ark is accomplished by building six Hibernation Chambers in the Upwelling room. These chambers are very expensive, and require huge supplies of food to keep our people alive in suspended animation for the 500 years the storm will rage."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Page3" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "We have four types of resource buildings:"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Page3Grid" type="GridContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+columns = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Farm Pod 
+Produces Food"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_1evju")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Built in the Flying Ferns"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer2/VBoxContainer4"]
+layout_mode = 2
+text = "Comms Array
+Produces Communication"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer2/VBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_m67i6")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer2/VBoxContainer4"]
+layout_mode = 2
+text = "Built at the Southern Wall"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "Science Pod 
+Produces the little blue bottles"
+horizontal_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer3/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("4_g78w5")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "Built in the vortex at the Journey Down"
+horizontal_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer4/VBoxContainer3"]
+layout_mode = 2
+text = "Metallic Xenon Refinery
+Produces Metallic Xenon"
+horizontal_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer4/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("5_332xq")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page3Grid/MarginContainer4/VBoxContainer3"]
+layout_mode = 2
+text = "Built in the depths of the Metal Divers"
+horizontal_alignment = 1
+
+[node name="Page3_2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Each of these buildings is built in their own regions. The region for each building lists what can be built there."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Page4" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+theme_override_font_sizes/font_size = 30
+text = "We can recruit workers with the \"Recruit Worker\" button in the top right. The new worker will exit the transport ship on the bottom right of the screen.
+
+Moving workers is done by selecting them with the Left Mouse Button, or by dragging a box around a group of workers. The selected workers can be moved with Right Mouse Button.
+
+We can improve the speed at which we generate resources by sending workers to the relevant buildings. After a brief training period, they will begin working. 
+
+If we are to follow the path of escape, and negotiate passage, we must send our workers to the Embassy of the People Accross the Wall. They will consume massive amounts of our language, but their participation is vital to the success of this plan.
+
+We also have to feed our workers. Each worker consumes 0.05 food per second, and if we ever run out, we all will die."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Page5" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 30
+text = "We also have a transport ship, which can be used to move workers between regions. Send workers to the transport ship, and click the icons below to embark/disembark them."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Page5Icons" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Embark Workers"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_d0m7u")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons/MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Disembark Workers"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Page5Icons/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_cba7h")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="button_placeholder" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Previous"
+
+[node name="Button2" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next"
+
+[node name="Button3" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Begin!"
+
+[node name="Control2" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]

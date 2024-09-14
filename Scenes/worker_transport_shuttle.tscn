@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d31yce1wylmri"]
+
+[ext_resource type="Texture2D" uid="uid://c76rw216qahtt" path="res://Assets/Endgame Buildings/worker_transport_shuttle.png" id="1_blcqd"]
+[ext_resource type="Script" path="res://Scenes/worker_transport_shuttle.gd" id="2_jsgaw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dn347"]
+radius = 222.576
+
+[node name="WorkerTransportShuttle" type="Sprite2D"]
+texture = ExtResource("1_blcqd")
+script = ExtResource("2_jsgaw")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4128768
+collision_mask = 4128768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_dn347")

@@ -1,18 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://eohrnhye0v6j"]
+[gd_scene load_steps=15 format=3 uid="uid://eohrnhye0v6j"]
 
 [ext_resource type="PackedScene" uid="uid://c4p42tc6wft0k" path="res://Scenes/UI/ui.tscn" id="1_2dobh"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_8gxdj"]
 [ext_resource type="Texture2D" uid="uid://ws5wif2au4l6" path="res://Assets/Backgrounds/Highest_Level_BG_Upwelling_gatherer.png" id="1_d7fdb"]
-[ext_resource type="PackedScene" uid="uid://de2hhpq7sv1lp" path="res://Scenes/Characters/jelly_person.tscn" id="2_fu54f"]
+[ext_resource type="PackedScene" uid="uid://c4lhuk0avvfwa" path="res://Scenes/UI/intro_menu.tscn" id="3_q7jil"]
+[ext_resource type="PackedScene" uid="uid://d0wfmyeihxv5h" path="res://Scenes/UI/EndScreen.tscn" id="4_0v17y"]
 [ext_resource type="PackedScene" uid="uid://ctg0v875xohnf" path="res://Scenes/building_point.tscn" id="4_h3iyk"]
 [ext_resource type="Texture2D" uid="uid://lpvvgfectogm" path="res://Assets/Backgrounds/Flying_Ferns_BG.png" id="5_r6bxw"]
 [ext_resource type="Texture2D" uid="uid://bko4i2png4jt6" path="res://Assets/Backgrounds/highest_level_southern_wall_bg.png" id="6_6g7su"]
 [ext_resource type="Texture2D" uid="uid://siqrwdbnkgwx" path="res://Assets/Backgrounds/Journey_Down_BG.png" id="7_opmj2"]
 [ext_resource type="Texture2D" uid="uid://7swo7j6l00k" path="res://Assets/Backgrounds/meeting_room.png" id="8_ku8p6"]
+[ext_resource type="PackedScene" uid="uid://c37hl6fboccsa" path="res://Scenes/EndgameBuildings/meeting_room.tscn" id="8_tun15"]
 [ext_resource type="Texture2D" uid="uid://cyh4dcyqoqne4" path="res://Assets/Backgrounds/metal_divers_bg.png" id="9_n5nyb"]
+[ext_resource type="Script" path="res://Scenes/box_select.gd" id="12_kdb0m"]
+[ext_resource type="PackedScene" uid="uid://d31yce1wylmri" path="res://Scenes/worker_transport_shuttle.tscn" id="12_q88we"]
 
-[node name="Main" type="Node"]
+[node name="World" type="Node2D"]
 script = ExtResource("1_8gxdj")
+
+[node name="JellyPersonSpawnClock" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
 
 [node name="TimeTillNextDay" type="Timer" parent="."]
 wait_time = 300.0
@@ -24,6 +32,11 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("1_2dobh")]
+metadata/_edit_use_anchors_ = true
+
+[node name="IntroMenu" parent="CanvasLayer" instance=ExtResource("3_q7jil")]
+
+[node name="EndScreen" parent="CanvasLayer" instance=ExtResource("4_0v17y")]
 
 [node name="FlyingFernsBg" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -69,12 +82,6 @@ building_type = 2
 position = Vector2(-412, 160)
 building_type = 2
 
-[node name="JellyPerson" parent="FlyingFernsBg" instance=ExtResource("2_fu54f")]
-position = Vector2(282, -187)
-collision_layer = 0
-collision_mask = 0
-target_location = Vector2(500, 500)
-
 [node name="HighestLevelSouthernWallBg" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(960, 540)
@@ -117,15 +124,69 @@ collision_layer = 0
 collision_mask = 0
 building_type = 1
 
-[node name="HighestLevelBgUpwellingGatherer" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(960, 540)
-texture = ExtResource("1_d7fdb")
+[node name="EndPodShip" parent="HighestLevelSouthernWallBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(356, -150)
+rotation = 0.0411265
+building_type = 5
+
+[node name="Ship5" parent="HighestLevelSouthernWallBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(202, -150)
+rotation = 0.0411265
+building_type = 6
+
+[node name="Ship6" parent="HighestLevelSouthernWallBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(48, -150)
+rotation = 0.0411265
+building_type = 6
+
+[node name="Ship8" parent="HighestLevelSouthernWallBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-106, -150)
+rotation = 0.0411265
+building_type = 6
+
+[node name="Ship7" parent="HighestLevelSouthernWallBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-260, -150)
+rotation = 0.0411265
+building_type = 7
 
 [node name="MeetingRoom" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(960, 540)
 texture = ExtResource("8_ku8p6")
+
+[node name="Building" parent="MeetingRoom" instance=ExtResource("8_tun15")]
+position = Vector2(-6, 8)
+scale = Vector2(2, 2)
+worker_efficiency = 0.002
+
+[node name="HighestLevelBgUpwellingGatherer" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("1_d7fdb")
+
+[node name="building_point" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("4_h3iyk")]
+position = Vector2(-408, 18)
+building_type = 8
+
+[node name="building_point2" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("4_h3iyk")]
+position = Vector2(343, 55)
+building_type = 8
+
+[node name="building_point3" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("4_h3iyk")]
+position = Vector2(290, 397)
+building_type = 8
+
+[node name="building_point5" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("4_h3iyk")]
+position = Vector2(-354, 397)
+building_type = 8
+
+[node name="building_point6" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("4_h3iyk")]
+position = Vector2(-59, 237)
+building_type = 8
+
+[node name="building_point7" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("4_h3iyk")]
+position = Vector2(-140, 44)
+building_type = 8
 
 [node name="JourneyDownBg" type="Sprite2D" parent="."]
 visible = false
@@ -165,12 +226,6 @@ visible = false
 position = Vector2(960, 540)
 texture = ExtResource("9_n5nyb")
 
-[node name="JellyPerson2" parent="MetalDiversBg" instance=ExtResource("2_fu54f")]
-position = Vector2(309, -12)
-collision_layer = 1048576
-collision_mask = 1048576
-target_location = Vector2(500, 600)
-
 [node name="building_point" parent="MetalDiversBg" instance=ExtResource("4_h3iyk")]
 position = Vector2(-458, 360)
 
@@ -185,9 +240,17 @@ position = Vector2(-70, 62)
 
 [node name="BuildingsContainer" type="Node2D" parent="."]
 
+[node name="WorkerTransportShuttle" parent="." instance=ExtResource("12_q88we")]
+position = Vector2(1920, 845)
+
+[node name="BoxSelect" type="Node2D" parent="."]
+script = ExtResource("12_kdb0m")
+
 [connection signal="timeout" from="TimeTillNextDay" to="." method="_on_time_till_next_day_timeout"]
 [connection signal="timeout" from="PassiveResourceTimer" to="." method="_on_passive_resource_timer_timeout"]
+[connection signal="dispense_workers_pressed" from="CanvasLayer/Control" to="." method="_on_dispense_workers_pressed"]
 [connection signal="go_next_day" from="CanvasLayer/Control" to="." method="_on_control_go_next_day"]
 [connection signal="go_to_screen" from="CanvasLayer/Control" to="." method="_on_control_go_to_screen"]
+[connection signal="hoover_workers_pressed" from="CanvasLayer/Control" to="." method="_on_control_hoover_workers_pressed"]
+[connection signal="spawn_new_workers" from="CanvasLayer/Control" to="." method="_on_control_spawn_new_workers"]
 [connection signal="ui_make_building" from="CanvasLayer/Control" to="." method="_on_control_ui_make_building"]
-[connection signal="input_event" from="FlyingFernsBg/JellyPerson" to="." method="_on_jelly_person_input_event"]

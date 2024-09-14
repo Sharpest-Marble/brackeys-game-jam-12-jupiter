@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://cds84b1idr43j"]
+
+[ext_resource type="Script" path="res://building.gd" id="1_dfdl8"]
+[ext_resource type="Texture2D" uid="uid://d0vi33s6g3lq0" path="res://Assets/Endgame Buildings/hibernation_chamber.png" id="2_7b4ol"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k16vb"]
+radius = 208.614
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_irj4l"]
+radius = 300.027
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjih8"]
+radius = 171.292
+
+[sub_resource type="Animation" id="Animation_ujjlf"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/BuildingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_3528s"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/BuildingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6frf"]
+_data = {
+"RESET": SubResource("Animation_ujjlf"),
+"new_animation": SubResource("Animation_3528s")
+}
+
+[node name="Building" type="Node2D"]
+script = ExtResource("1_dfdl8")
+building_name = "Hibernation Chamber"
+building_type = 8
+building_texture = ExtResource("2_7b4ol")
+building_process_time = 0.5
+resource_produced = 1
+worked_by = 3
+
+[node name="SnapTo" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 65536
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnapTo"]
+shape = SubResource("CircleShape2D_k16vb")
+
+[node name="WorkerAssociation" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorkerAssociation"]
+shape = SubResource("CircleShape2D_irj4l")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="BuildingSprite" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("2_7b4ol")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_xjih8")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m6frf")
+}
+autoplay = "new_animation"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

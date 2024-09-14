@@ -56,6 +56,7 @@ building_type = 1
 building_texture = ExtResource("2_d1qbk")
 building_process_time = 0.5
 resource_produced = 3
+worked_by = 1
 
 [node name="SnapTo" type="Area2D" parent="."]
 collision_layer = 65536

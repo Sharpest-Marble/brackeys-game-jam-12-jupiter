@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://de2hhpq7sv1lp"]
+[gd_scene load_steps=29 format=3 uid="uid://de2hhpq7sv1lp"]
 
 [ext_resource type="Texture2D" uid="uid://bnfh4xgdwx3ln" path="res://Assets/Character/jelly_person.png" id="1_deddm"]
 [ext_resource type="Script" path="res://Scenes/Characters/jelly_person.gd" id="1_untd8"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="10_r80jp"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="13_5ouki"]
 [ext_resource type="Script" path="res://Scenes/Characters/jelly_person_area.gd" id="13_bvehs"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/expression_guard.gd" id="13_x7yfb"]
 
 [sub_resource type="Animation" id="Animation_7b0a3"]
 length = 0.001
@@ -40,6 +41,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.199219, 0.199219)]
 }
 
 [sub_resource type="Animation" id="Animation_apyt0"]
@@ -154,18 +167,75 @@ tracks/1/keys = {
 "values": []
 }
 
+[sub_resource type="Animation" id="Animation_l3lcw"]
+resource_name = "working"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1.56088), Vector2(-5, -37.5), Vector2(0, 0), Vector2(-67.5, -52.5), Vector2(0, 1.56088)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.22964, 2.54343, -0.66873, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.199219, 0.199219), Vector2(0.216887, 0.132441), Vector2(0.284646, 0.344009), Vector2(-0.109994, 0.0266151), Vector2(0.199219, 0.199219)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u5php"]
 _data = {
 "RESET": SubResource("Animation_7b0a3"),
 "hover": SubResource("Animation_apyt0"),
 "move": SubResource("Animation_d25s7"),
 "move_left": SubResource("Animation_bpc5y"),
-"training": SubResource("Animation_cfvpr")
+"training": SubResource("Animation_cfvpr"),
+"working": SubResource("Animation_l3lcw")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2mwcl"]
 radius = 19.0
 height = 98.0
+
+[sub_resource type="Resource" id="Resource_47vkv"]
+script = ExtResource("13_x7yfb")
+expression = "character_class == 4"
+
+[sub_resource type="Resource" id="Resource_kwna7"]
+script = ExtResource("13_x7yfb")
+expression = "character_class == 2"
+
+[sub_resource type="Resource" id="Resource_0vyo8"]
+script = ExtResource("13_x7yfb")
+expression = "character_class == 0"
+
+[sub_resource type="Resource" id="Resource_7on3p"]
+script = ExtResource("13_x7yfb")
+expression = "character_class == 1"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7j1wh"]
 radius = 208.591
@@ -203,6 +273,7 @@ libraries = {
 "": SubResource("AnimationLibrary_u5php")
 }
 autoplay = "hover"
+blend_times = [&"working", &"working", 0.07]
 
 [node name="modifier" type="Sprite2D" parent="JellyPersonBody"]
 texture = ExtResource("3_35efr")
@@ -253,6 +324,12 @@ to = NodePath("../../training")
 event = &"start_training"
 delay_in_seconds = "0.0"
 
+[node name="trans_working" type="Node" parent="StateChart/ParallelState/movement/hover"]
+script = ExtResource("9_grl81")
+to = NodePath("../../working")
+event = &"start_working"
+delay_in_seconds = "0.1"
+
 [node name="move_right" type="Node" parent="StateChart/ParallelState/movement"]
 script = ExtResource("8_3sde6")
 animation_player = NodePath("../../../../JellyPersonBody/AnimationPlayer")
@@ -276,6 +353,12 @@ to = NodePath("../../training")
 event = &"start_training"
 delay_in_seconds = "0.0"
 
+[node name="trans_working" type="Node" parent="StateChart/ParallelState/movement/move_right"]
+script = ExtResource("9_grl81")
+to = NodePath("../../working")
+event = &"start_working"
+delay_in_seconds = "0.1"
+
 [node name="move_left" type="Node" parent="StateChart/ParallelState/movement"]
 script = ExtResource("8_3sde6")
 animation_player = NodePath("../../../../JellyPersonBody/AnimationPlayer")
@@ -293,6 +376,13 @@ to = NodePath("../../move_right")
 event = &"move_right"
 delay_in_seconds = "0.0"
 
+[node name="trans_working" type="Node" parent="StateChart/ParallelState/movement/move_left"]
+script = ExtResource("9_grl81")
+to = NodePath("../../working")
+event = &"start_working"
+delay_in_seconds = "0.1
+"
+
 [node name="trans_training" type="Node" parent="StateChart/ParallelState/movement/move_left"]
 script = ExtResource("9_grl81")
 to = NodePath("../../training")
@@ -304,11 +394,34 @@ script = ExtResource("8_3sde6")
 animation_player = NodePath("../../../../JellyPersonBody/AnimationPlayer")
 animation_name = &"training"
 
-[node name="Transition" type="Node" parent="StateChart/ParallelState/movement/training"]
+[node name="trans_working" type="Node" parent="StateChart/ParallelState/movement/training"]
+script = ExtResource("9_grl81")
+to = NodePath("../../working")
+event = &"start_working"
+delay_in_seconds = "0.1"
+
+[node name="working" type="Node" parent="StateChart/ParallelState/movement"]
+script = ExtResource("8_3sde6")
+animation_player = NodePath("../../../../JellyPersonBody/AnimationPlayer")
+animation_name = &"working"
+
+[node name="trans_move_right" type="Node" parent="StateChart/ParallelState/movement/working"]
+script = ExtResource("9_grl81")
+to = NodePath("../../move_right")
+event = &"move_right"
+delay_in_seconds = "0.0"
+
+[node name="trans_move_left" type="Node" parent="StateChart/ParallelState/movement/working"]
+script = ExtResource("9_grl81")
+to = NodePath("../../move_left")
+event = &"move_left"
+delay_in_seconds = "0.0"
+
+[node name="Transition" type="Node" parent="StateChart/ParallelState/movement/working"]
 script = ExtResource("9_grl81")
 to = NodePath("../../hover")
-event = &"training_finished"
-delay_in_seconds = "1"
+event = &"idle"
+delay_in_seconds = "0.0"
 
 [node name="modifier_states" type="Node" parent="StateChart/ParallelState"]
 script = ExtResource("7_y1qqi")
@@ -446,25 +559,25 @@ script = ExtResource("10_r80jp")
 script = ExtResource("9_grl81")
 to = NodePath("../../science_training")
 event = &"Science_entered"
-delay_in_seconds = "0.0"
+delay_in_seconds = "0.1"
 
 [node name="become_farmer" type="Node" parent="StateChart/ParallelState/training/idle"]
 script = ExtResource("9_grl81")
 to = NodePath("../../farmer_training")
 event = &"Farm_entered"
-delay_in_seconds = "0.0"
+delay_in_seconds = "0.10"
 
 [node name="become_engineer" type="Node" parent="StateChart/ParallelState/training/idle"]
 script = ExtResource("9_grl81")
 to = NodePath("../../engineer_training")
 event = &"Mine_entered"
-delay_in_seconds = "0.0"
+delay_in_seconds = "0.10"
 
 [node name="become_communicator" type="Node" parent="StateChart/ParallelState/training/idle"]
 script = ExtResource("9_grl81")
 to = NodePath("../../comm_training")
 event = &"Comms_entered"
-delay_in_seconds = "0.0"
+delay_in_seconds = "0.10"
 
 [node name="science_training" type="Node" parent="StateChart/ParallelState/training"]
 script = ExtResource("10_r80jp")
@@ -472,7 +585,7 @@ script = ExtResource("10_r80jp")
 [node name="finish_training" type="Node" parent="StateChart/ParallelState/training/science_training"]
 script = ExtResource("9_grl81")
 to = NodePath("../../idle")
-event = &"training_finished"
+guard = SubResource("Resource_47vkv")
 delay_in_seconds = "0.0"
 
 [node name="farmer_training" type="Node" parent="StateChart/ParallelState/training"]
@@ -481,7 +594,7 @@ script = ExtResource("10_r80jp")
 [node name="finish_training" type="Node" parent="StateChart/ParallelState/training/farmer_training"]
 script = ExtResource("9_grl81")
 to = NodePath("../../idle")
-event = &"training_finished"
+guard = SubResource("Resource_kwna7")
 delay_in_seconds = "0.0"
 
 [node name="engineer_training" type="Node" parent="StateChart/ParallelState/training"]
@@ -490,7 +603,7 @@ script = ExtResource("10_r80jp")
 [node name="finish_training" type="Node" parent="StateChart/ParallelState/training/engineer_training"]
 script = ExtResource("9_grl81")
 to = NodePath("../../idle")
-event = &"training_finished"
+guard = SubResource("Resource_0vyo8")
 delay_in_seconds = "0.0"
 
 [node name="comm_training" type="Node" parent="StateChart/ParallelState/training"]
@@ -499,7 +612,7 @@ script = ExtResource("10_r80jp")
 [node name="finish_training" type="Node" parent="StateChart/ParallelState/training/comm_training"]
 script = ExtResource("9_grl81")
 to = NodePath("../../idle")
-event = &"training_finished"
+guard = SubResource("Resource_7on3p")
 delay_in_seconds = "0.0"
 
 [node name="Selection" type="Node" parent="StateChart/ParallelState"]
@@ -528,8 +641,6 @@ delay_in_seconds = "0.0"
 light_mask = 65536
 visibility_layer = 65536
 scale = Vector2(0.258454, 0.496974)
-monitoring = false
-monitorable = false
 script = ExtResource("13_bvehs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -537,17 +648,35 @@ shape = SubResource("CircleShape2D_7j1wh")
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("13_5ouki")]
 offset_left = 93.0
-offset_top = -476.0
-offset_right = 716.0
-offset_bottom = 63.0
+offset_top = -1067.0
+offset_right = 601.0
+offset_bottom = -636.0
+scale = Vector2(3.71, 3.71)
 enabled = false
 initial_node_to_watch = NodePath("../StateChart")
 
 [node name="TrainingTimer" type="Timer" parent="."]
+one_shot = true
 
+[node name="debugging_timer" type="Timer" parent="."]
+autostart = true
+
+[node name="FoodTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="state_entered" from="StateChart/ParallelState/movement/working" to="." method="_on_working_state_entered"]
+[connection signal="state_exited" from="StateChart/ParallelState/movement/working" to="." method="_on_working_state_exited"]
+[connection signal="state_entered" from="StateChart/ParallelState/training/science_training" to="." method="_on_working_state_entered"]
 [connection signal="state_entered" from="StateChart/ParallelState/training/science_training" to="." method="_on_science_training_state_entered"]
+[connection signal="state_entered" from="StateChart/ParallelState/training/farmer_training" to="." method="_on_working_state_entered"]
 [connection signal="state_entered" from="StateChart/ParallelState/training/farmer_training" to="." method="_on_farmer_training_state_entered"]
+[connection signal="state_entered" from="StateChart/ParallelState/training/engineer_training" to="." method="_on_working_state_entered"]
 [connection signal="state_entered" from="StateChart/ParallelState/training/engineer_training" to="." method="_on_engineer_training_state_entered"]
+[connection signal="state_entered" from="StateChart/ParallelState/training/comm_training" to="." method="_on_working_state_entered"]
 [connection signal="state_entered" from="StateChart/ParallelState/training/comm_training" to="." method="_on_comm_training_state_entered"]
+[connection signal="state_entered" from="StateChart/ParallelState/Selection/Selected" to="." method="_on_selected_state_entered"]
+[connection signal="state_entered" from="StateChart/ParallelState/Selection/Not_Selected" to="." method="_on_not_selected_state_entered"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="debugging_timer" to="." method="_on_debugging_timer_timeout"]
+[connection signal="timeout" from="FoodTimer" to="." method="_on_food_timer_timeout"]

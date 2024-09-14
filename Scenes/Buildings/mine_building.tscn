@@ -54,6 +54,7 @@ script = ExtResource("1_lntqi")
 building_name = "Mine"
 building_texture = ExtResource("2_w2mtv")
 resource_qty = 10
+max_workers = 10
 resource_produced = 1
 
 [node name="SnapTo" type="Area2D" parent="."]

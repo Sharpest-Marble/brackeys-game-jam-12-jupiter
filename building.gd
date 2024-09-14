@@ -3,7 +3,7 @@ extends Node2D
 class_name Building
 @export_category("Building Info")
 @export var building_name: String = "science_building"
-@export_enum("Mine", "Comms", "Farm","Science", "Upgrade") var building_type: int
+@export_enum("Mine", "Comms", "Farm","Science", "Upgrade","ShipEnd","Ship","ShipEngine","Ark","None") var building_type: int
 @export var building_texture: Texture2D
 @export var building_process_time: float = 5
 @export var layer_active: int = 17
@@ -13,6 +13,8 @@ class_name Building
 @export var max_workers: int = 5
 @export var worker_efficiency: float = 0.1
 @export_enum("SCIENCE","METAL","FOOD","COMM") var resource_produced: int
+@export_enum("ENGINEER", "COMMUNICATOR", "FARMER", "NONE","SCIENTIST") var worked_by: int
+@export var comm_cost: int = 5
 
 @onready var worker_association: Area2D = $WorkerAssociation
 @onready var static_body_2d: StaticBody2D = $StaticBody2D
@@ -32,7 +34,18 @@ const POSSIBLE_UPGRADES: Array[String] = [
 	"ResourceBoost",
 	"ByproductHarvester"
 ]
-
+enum building_types {
+	Mine, 
+	Comms, 
+	Farm,
+	Science, 
+	Upgrade,
+	ShipEnd,
+	Ship,
+	ShipEngine,
+	Ark,
+	None	
+}
 enum resources {
 	SCIENCE,
 	METAL,
@@ -48,11 +61,16 @@ var placed: bool = false
 
 signal produced_resource(resource_type: int, resource_qty: int)
 signal update_resouce_delta(resource_delta_delta:Array[float])
+signal deselect_worker(worker_entered)
+signal negotiate(rate,comm_cost)
 
 func _ready() -> void:
-	worker_association_collision_shape.set_disabled(true)
-	static_body_2d_collision_shape.set_disabled(true)
-	snap_to_collision_shape.set_disabled(false)
+	if building_type != building_types.None:
+		worker_association_collision_shape.set_disabled(true)
+		static_body_2d_collision_shape.set_disabled(true)
+		snap_to_collision_shape.set_disabled(false)
+	else:
+		snap_to_collision_shape.set_disabled(true)
 	building_sprite.texture = building_texture
 	name = building_name
 	timer.wait_time = building_process_time
@@ -60,6 +78,8 @@ func _ready() -> void:
 	building_sprite.set_self_modulate(Color(0.1,0.1,01,0.5))
 	worker_association.body_entered.connect(_on_worker_association_body_entered)
 	worker_association.body_exited.connect(_on_worker_association_body_exited)
+	#if building_type == building_types.None:
+		#place_building()
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -74,12 +94,13 @@ func update_worker_production_rate(worker_delta: int):
 		0,0,0,0
 	]
 	worker_resource_delta_delta[resource_produced] = worker_efficiency*worker_delta*float(resource_qty)/float(timer.wait_time)
-	print(worker_resource_delta_delta)
+	#print(worker_resource_delta_delta)
 	update_resouce_delta.emit(worker_resource_delta_delta)
 
 func update_production_rate():
-	resource_delta_delta[resource_produced] = float(resource_qty) / float(timer.wait_time)
-	update_resouce_delta.emit(resource_delta_delta)
+	if building_type in range(0,4):
+		resource_delta_delta[resource_produced] = float(resource_qty) / float(timer.wait_time)
+		update_resouce_delta.emit(resource_delta_delta)
 
 func update_layers_active(current_layer: int):
 	layer_active = current_layer
@@ -105,22 +126,36 @@ func place_building():
 	
 
 
-#TODO: make this thign do the thing
 func _on_timer_timeout() -> void:
-	produced_resource.emit(resource_produced,resource_qty * (1 + worker_efficiency)* current_workers)
+	if building_type in range(0,4):
+		produced_resource.emit(resource_produced,resource_qty * (1 + worker_efficiency)* current_workers)
+	if building_type == building_types.None:
+		negotiate.emit(current_workers*worker_efficiency, current_workers*comm_cost)
 	#print(name + " timer timeout")
 	pass
 
 
 func _on_worker_association_body_entered(body: Node2D) -> void:
-	if body is JellyPerson && current_workers < max_workers:
-		body.state_chart.send_event(building_name+"_entered")
+	if body is JellyPerson && current_workers < max_workers && (building_type in range(0,4) or building_type == building_types.None):
+		#spread out the workers a bit
+		# this doesnt work super well but eh
+		deselect_worker.emit(body)
+		var circle_offset:Vector2 = 50*Vector2(sin(2*(current_workers*PI)/max_workers),cos(2*(current_workers*PI)/max_workers))
+		#print(circle_offset)
+		body.target_location = global_position + circle_offset
+		if building_type == building_types.None:
+			body.target_location = global_position - Vector2(500 - 100*current_workers/2,200 *(current_workers%2))
+			for i in range(2):
+				await timer.timeout
+		body.state_chart.send_event.call_deferred(building_name+"_entered")
 		current_workers+=1
 		update_worker_production_rate(1)
 
 
+
 func _on_worker_association_body_exited(body: Node2D) -> void:
-	print(body)
-	if body is JellyPerson:
+	if body is JellyPerson && building_type in range(0,4):
+		body.jelly_person_body.scale = Vector2(0.2,0.2)
 		current_workers -= 1
 		update_worker_production_rate(-1)
+		body.state_chart.send_event("idle")
