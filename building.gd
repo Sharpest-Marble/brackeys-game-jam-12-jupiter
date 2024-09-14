@@ -153,21 +153,19 @@ func _on_worker_association_body_entered(body: Node2D) -> void:
 		body.target_location = global_position + circle_offset
 		body.set_collision_mask_value(Globals.current_layer,false)
 		if building_type == building_types.None:
-			body.target_location = global_position - Vector2(500 - 100*current_workers/2,200 *(current_workers%2))
-			for i in range(2):
-				await timer.timeout
+			body.target_location = global_position + Vector2(10*current_workers/2-200,10*(current_workers%2))
+			await get_tree().create_timer(1).timeout
 		body.state_chart.send_event.call_deferred(building_name+"_entered")
 		current_workers+=1
 		associated_workers.append(body)
 		update_worker_production_rate(1)
-		print(current_workers)
 
 func replace_worker():
 	for body in worker_association.get_overlapping_bodies():
 		_on_worker_association_body_entered(body)
 
 func _on_worker_association_body_exited(body: Node2D) -> void:
-	if body is JellyPerson && building_type in range(0,4) && body in associated_workers:
+	if body is JellyPerson && (building_type in range(0,4) or building_type == building_types.None) && body in associated_workers:
 		print(body)
 		body.jelly_person_body.scale = Vector2(0.2,0.2)
 		current_workers -= 1

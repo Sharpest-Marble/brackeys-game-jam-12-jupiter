@@ -121,8 +121,6 @@ position = Vector2(960, 540)
 texture = ExtResource("8_ku8p6")
 
 [node name="Building" parent="MeetingRoom" instance=ExtResource("8_tun15")]
-position = Vector2(-6, 8)
-scale = Vector2(2, 2)
 building_process_time = 2.0
 max_workers = 1000
 worker_efficiency = 0.01

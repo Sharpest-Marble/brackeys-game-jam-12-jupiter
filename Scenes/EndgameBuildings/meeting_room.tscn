@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bp81q6cal081j" path="res://Assets/Endgame Buildings/end_pod.png" id="2_lfnwi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k16vb"]
-radius = 208.614
+radius = 33.3933
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_irj4l"]
-radius = 300.027
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lm8hi"]
+radius = 177.956
+height = 667.95
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjih8"]
 radius = 171.292
@@ -50,7 +51,7 @@ _data = {
 }
 
 [node name="Building" type="Node2D"]
-scale = Vector2(3, 3)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_byys6")
 building_name = "Comms"
 building_type = 9
@@ -67,12 +68,15 @@ collision_mask = 65536
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SnapTo"]
 shape = SubResource("CircleShape2D_k16vb")
+disabled = true
 
 [node name="WorkerAssociation" type="Area2D" parent="."]
 collision_mask = 4
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorkerAssociation"]
-shape = SubResource("CircleShape2D_irj4l")
+rotation = -1.57375
+shape = SubResource("CapsuleShape2D_lm8hi")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -83,6 +87,7 @@ texture = ExtResource("2_lfnwi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_xjih8")
+disabled = true
 
 [node name="Timer" type="Timer" parent="."]
 

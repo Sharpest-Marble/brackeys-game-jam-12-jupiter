@@ -1,6 +1,6 @@
 extends Node2D
 
-var cheat_mode = false
+var cheat_mode = true
 
 @onready var box_select: Node2D = $BoxSelect
 @onready var control: Control = $CanvasLayer/Control
@@ -141,6 +141,7 @@ func _ready() -> void:
 				child.layer_active = Globals.current_layer + level
 				child.negotiate.connect(negotiate_passage)
 				child.update_resouce_delta.connect(update_resouce_deltas)
+				child.global_position = Vector2(960,540)
 				child.place_building()
 				negotiation_building = child
 

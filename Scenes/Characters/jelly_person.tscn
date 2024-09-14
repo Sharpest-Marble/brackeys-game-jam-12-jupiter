@@ -241,6 +241,7 @@ expression = "character_class == 1"
 radius = 208.591
 
 [node name="JellyPerson" type="CharacterBody2D"]
+position = Vector2(1920, 1080)
 scale = Vector2(0.4, 0.4)
 collision_layer = 8
 collision_mask = 7
