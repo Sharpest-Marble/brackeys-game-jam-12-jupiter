@@ -55,7 +55,8 @@ building_name = "Comms"
 building_type = 1
 building_texture = ExtResource("2_d1qbk")
 building_process_time = 0.5
-worker_efficiency = 0.5
+max_workers = 8
+worker_efficiency = 0.2
 resource_produced = 3
 worked_by = 1
 

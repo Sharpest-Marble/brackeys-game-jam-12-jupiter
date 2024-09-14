@@ -113,10 +113,11 @@ theme_override_constants/margin_bottom = 8
 [node name="farm_button" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer2" instance=ExtResource("3_p4vy7")]
 layout_mode = 2
 building = ExtResource("5_86ufr")
-resource_cost = Array[int]([6, 2, 0, 12])
+resource_cost = Array[int]([6, 2, 0, 13])
 building_texture = ExtResource("6_twn7j")
 button_text = "Farm Pod"
 button_name = "farm_building_button"
+resource_qty = 3
 building_type = 2
 resources_produced = 2
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn6fi0tof8bgp"]
+[gd_scene load_steps=4 format=3 uid="uid://dn6fi0tof8bgp"]
 
 [ext_resource type="Script" path="res://Scenes/UI/pause_menu.gd" id="1_dy04f"]
 [ext_resource type="PackedScene" uid="uid://6i8f8gdcv7y1" path="res://Scenes/UI/audio_slider.tscn" id="2_7qs5r"]
+[ext_resource type="Texture2D" uid="uid://boqg7k57aqx1x" path="res://Assets/UI/help.png" id="2_wjda7"]
 
 [node name="Pause_Menu" type="PanelContainer"]
 anchors_preset = -1
@@ -40,7 +41,8 @@ size_flags_stretch_ratio = 7.0
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 6
-text = "Reference Sheets"
+text = "Help"
+icon = ExtResource("2_wjda7")
 
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -88,6 +90,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 2

@@ -113,6 +113,7 @@ position = Vector2(-111, 89)
 building_type = 2
 
 [node name="HighestLevelSouthernWallBg" parent="." instance=ExtResource("6_r18qj")]
+visible = false
 
 [node name="MeetingRoom" type="Sprite2D" parent="."]
 visible = false
@@ -123,10 +124,12 @@ texture = ExtResource("8_ku8p6")
 position = Vector2(-6, 8)
 scale = Vector2(2, 2)
 building_process_time = 2.0
+max_workers = 1000
 worker_efficiency = 0.01
 comm_cost = 2
 
 [node name="HighestLevelBgUpwellingGatherer" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(960, 540)
 texture = ExtResource("1_d7fdb")
 

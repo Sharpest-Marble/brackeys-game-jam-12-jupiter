@@ -52,7 +52,7 @@ enum resources {
 	FOOD,
 	COMM
 }
-
+var associated_workers = []
 var resource_delta_delta: Array[float] = [
 	0,0,0,0
 ]
@@ -125,8 +125,8 @@ func place_building():
 	snap_to_collision_shape.set_disabled(true)
 	worker_association.set_collision_layer_value(layer_active,true)
 	worker_association.set_collision_mask_value(layer_active,true)
-	static_body_2d.set_collision_layer_value(layer_active,true)
-	static_body_2d.set_collision_mask_value(layer_active,true)
+	#static_body_2d.set_collision_layer_value(layer_active,true)
+	#static_body_2d.set_collision_mask_value(layer_active,true)
 	building_sprite.set_self_modulate(Color(1,1,1,1))
 	update_production_rate()
 	
@@ -134,9 +134,7 @@ func place_building():
 
 func _on_timer_timeout() -> void:
 	if building_type in range(0,4):
-		print("Adding resource %d"%resource_produced)
 		var resource_qty_sent = resource_qty * (1 + worker_efficiency*current_workers)
-		print("QTY: %0.2f"% resource_qty_sent)
 		produced_resource.emit(resource_produced,resource_qty_sent)
 	if building_type == building_types.None:
 		negotiate.emit(current_workers*worker_efficiency, current_workers*comm_cost)
@@ -145,26 +143,37 @@ func _on_timer_timeout() -> void:
 
 
 func _on_worker_association_body_entered(body: Node2D) -> void:
-	if body is JellyPerson && current_workers < max_workers && (building_type in range(0,4) or building_type == building_types.None):
+	if body is JellyPerson && ((current_workers < max_workers && building_type in range(0,4)) or building_type == building_types.None):
+		assert(body is JellyPerson)
 		#spread out the workers a bit
 		# this doesnt work super well but eh
 		deselect_worker.emit(body)
-		var circle_offset:Vector2 = 50*Vector2(sin(2*(current_workers*PI)/max_workers),cos(2*(current_workers*PI)/max_workers))
+		var circle_offset:Vector2 = 50*Vector2(sin(-2*(current_workers*PI)/max_workers),cos(2*(current_workers*PI)/max_workers))
 		#print(circle_offset)
 		body.target_location = global_position + circle_offset
+		body.set_collision_mask_value(Globals.current_layer,false)
 		if building_type == building_types.None:
 			body.target_location = global_position - Vector2(500 - 100*current_workers/2,200 *(current_workers%2))
 			for i in range(2):
 				await timer.timeout
 		body.state_chart.send_event.call_deferred(building_name+"_entered")
 		current_workers+=1
+		associated_workers.append(body)
 		update_worker_production_rate(1)
+		print(current_workers)
 
-
+func replace_worker():
+	for body in worker_association.get_overlapping_bodies():
+		_on_worker_association_body_entered(body)
 
 func _on_worker_association_body_exited(body: Node2D) -> void:
-	if body is JellyPerson && building_type in range(0,4):
+	if body is JellyPerson && building_type in range(0,4) && body in associated_workers:
+		print(body)
 		body.jelly_person_body.scale = Vector2(0.2,0.2)
 		current_workers -= 1
+		associated_workers[associated_workers.find(body)] = null
+		print(current_workers)
 		update_worker_production_rate(-1)
 		body.state_chart.send_event("idle")
+	#replace_worker()
+		

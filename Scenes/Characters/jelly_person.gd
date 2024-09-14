@@ -73,7 +73,8 @@ func _physics_process(delta: float) -> void:
 	# Add an avoidance vector to move away from other units
 	var sd = social_distancing()
 	velocity = (velocity + sd * avoid_weight).normalized() * speed
-	move_and_slide()
+	if move_and_slide():
+		velocity = velocity + Vector2(randf_range(-3,3),randf_range(-3,3))
 	
 func become_selected():
 	state_chart.send_event("clicked_on")

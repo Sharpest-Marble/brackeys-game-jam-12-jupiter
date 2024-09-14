@@ -55,7 +55,8 @@ building_name = "Farm"
 building_type = 2
 building_texture = ExtResource("2_ww0oh")
 building_process_time = 1.0
-worker_efficiency = 0.5
+resource_qty = 3
+worker_efficiency = 0.2
 resource_produced = 2
 worked_by = 2
 
