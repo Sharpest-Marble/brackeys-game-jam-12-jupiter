@@ -1,6 +1,6 @@
 extends Node2D
 
-var cheat_mode = true
+var cheat_mode = false
 
 @onready var box_select: Node2D = $BoxSelect
 @onready var control: Control = $CanvasLayer/Control
