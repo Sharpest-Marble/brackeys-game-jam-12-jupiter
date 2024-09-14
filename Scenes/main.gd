@@ -1,6 +1,6 @@
 extends Node2D
 
-var cheat_mode = true
+var cheat_mode = false
 
 @onready var box_select: Node2D = $BoxSelect
 @onready var control: Control = $CanvasLayer/Control
@@ -140,6 +140,7 @@ func _ready() -> void:
 			if child is Building && level == screens.MEETING_ROOM:
 				child.layer_active = Globals.current_layer + level
 				child.negotiate.connect(negotiate_passage)
+				child.update_resouce_delta.connect(update_resouce_deltas)
 				child.place_building()
 				negotiation_building = child
 
@@ -309,6 +310,7 @@ func deselect_worker(worker):
 
 # TODO: add transition effect here
 func _on_control_go_to_screen(screen: Variant) -> void:
+	$SFXHolder/TravelSFX.play()
 	for screen_thing in screens_array:
 		screen_thing.visible = false
 	screens_array[screen].visible = true

@@ -113,7 +113,7 @@ theme_override_constants/margin_bottom = 8
 [node name="farm_button" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer2" instance=ExtResource("3_p4vy7")]
 layout_mode = 2
 building = ExtResource("5_86ufr")
-resource_cost = Array[int]([6, 0, 0, 15])
+resource_cost = Array[int]([6, 2, 0, 12])
 building_texture = ExtResource("6_twn7j")
 button_text = "Farm Pod"
 button_name = "farm_building_button"
@@ -132,7 +132,7 @@ theme_override_constants/margin_bottom = 8
 [node name="comms_button" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer" instance=ExtResource("3_p4vy7")]
 layout_mode = 2
 building = ExtResource("3_5y0mu")
-resource_cost = Array[int]([2, 3, 30, 0])
+resource_cost = Array[int]([2, 3, 20, 0])
 building_texture = ExtResource("4_oftxy")
 button_text = "Comms Array"
 button_name = "Comms_building_button"
@@ -151,7 +151,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="science_button" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer4" instance=ExtResource("3_p4vy7")]
 layout_mode = 2
-resource_cost = Array[int]([0, 5, 70, 100])
+resource_cost = Array[int]([0, 5, 30, 100])
 building_texture = ExtResource("9_2vlhg")
 button_text = "Research Pod"
 button_name = "science_building_button"
@@ -171,7 +171,7 @@ theme_override_constants/margin_bottom = 8
 [node name="mine_button" parent="HBoxContainer/Left Menu/PanelContainer/ScrollContainer/GridContainer/MarginContainer3" instance=ExtResource("3_p4vy7")]
 layout_mode = 2
 building = ExtResource("7_6yww2")
-resource_cost = Array[int]([30, 0, 300, 300])
+resource_cost = Array[int]([300, 0, 200, 150])
 building_texture = ExtResource("8_shy0h")
 button_text = "Xenon Refinery"
 button_name = "mine_building_button"
@@ -274,7 +274,7 @@ theme_override_constants/margin_bottom = 8
 [node name="hibernation_chamber_button" parent="HBoxContainer/Left Menu/PanelContainer6/ScrollContainer/GridContainer/MarginContainer3" instance=ExtResource("3_p4vy7")]
 layout_mode = 2
 building = ExtResource("16_tu3ix")
-resource_cost = Array[int]([100, 100, 1000, 100])
+resource_cost = Array[int]([800, 100, 1200, 100])
 building_texture = ExtResource("17_b0170")
 button_text = "Ark"
 button_name = "hibernation_button"

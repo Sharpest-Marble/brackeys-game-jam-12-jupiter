@@ -93,14 +93,20 @@ func update_worker_production_rate(worker_delta: int):
 	var worker_resource_delta_delta: Array[float] = [
 		0,0,0,0
 	]
-	worker_resource_delta_delta[resource_produced] = worker_efficiency*worker_delta*float(resource_qty)/float(timer.wait_time)
+	if building_type != building_types.None:
+		worker_resource_delta_delta[resource_produced] = worker_efficiency*worker_delta*float(resource_qty)/float(timer.wait_time)
 	#print(worker_resource_delta_delta)
+	if building_type == building_types.None:
+		var delta_comm_cost:int = float(worker_delta) * float(comm_cost) /timer.wait_time
+		worker_resource_delta_delta[resource_produced] = -delta_comm_cost
+		
 	update_resouce_delta.emit(worker_resource_delta_delta)
 
 func update_production_rate():
 	if building_type in range(0,4):
 		resource_delta_delta[resource_produced] = float(resource_qty) / float(timer.wait_time)
 		update_resouce_delta.emit(resource_delta_delta)
+		
 
 func update_layers_active(current_layer: int):
 	layer_active = current_layer

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://eohrnhye0v6j"]
+[gd_scene load_steps=19 format=3 uid="uid://eohrnhye0v6j"]
 
 [ext_resource type="PackedScene" uid="uid://c4p42tc6wft0k" path="res://Scenes/UI/ui.tscn" id="1_2dobh"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_8gxdj"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://7swo7j6l00k" path="res://Assets/Backgrounds/meeting_room.png" id="8_ku8p6"]
 [ext_resource type="PackedScene" uid="uid://c37hl6fboccsa" path="res://Scenes/EndgameBuildings/meeting_room.tscn" id="8_tun15"]
 [ext_resource type="Texture2D" uid="uid://cyh4dcyqoqne4" path="res://Assets/Backgrounds/metal_divers_bg.png" id="9_n5nyb"]
+[ext_resource type="PackedScene" uid="uid://cac5u34u5v6l1" path="res://Scenes/endgame_building_point.tscn" id="10_c4a5p"]
 [ext_resource type="Script" path="res://Scenes/box_select.gd" id="12_kdb0m"]
 [ext_resource type="PackedScene" uid="uid://d31yce1wylmri" path="res://Scenes/worker_transport_shuttle.tscn" id="12_q88we"]
 [ext_resource type="AudioStream" uid="uid://bh2to3jj2ajan" path="res://Audio/Music/Stream Loops 2024-01-24_01.ogg" id="14_8oedr"]
@@ -64,43 +65,51 @@ position = Vector2(960, 540)
 texture = ExtResource("5_r6bxw")
 
 [node name="building_point" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
-position = Vector2(903, 400)
+position = Vector2(-467, -276)
+building_type = 2
+
+[node name="building_point12" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(316, -142)
 building_type = 2
 
 [node name="building_point2" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
-position = Vector2(617, 420)
+position = Vector2(-188, -346)
 building_type = 2
 
 [node name="building_point3" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
-position = Vector2(610, 195)
+position = Vector2(-436, 43)
 building_type = 2
 
 [node name="building_point4" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
-position = Vector2(311, 198)
+position = Vector2(492, -172)
 building_type = 2
 
 [node name="building_point5" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
-position = Vector2(284, 394)
+position = Vector2(-257, 77)
 building_type = 2
 
 [node name="building_point6" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
-position = Vector2(0, 415)
+position = Vector2(50, -196)
 building_type = 2
 
 [node name="building_point7" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
-position = Vector2(-506, 346)
+position = Vector2(-34, -299)
 building_type = 2
 
 [node name="building_point8" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
-position = Vector2(-409, 452)
+position = Vector2(183, -150)
 building_type = 2
 
 [node name="building_point9" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
-position = Vector2(-96, 222)
+position = Vector2(-324, -316)
 building_type = 2
 
 [node name="building_point10" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
-position = Vector2(-412, 160)
+position = Vector2(-471, -94)
+building_type = 2
+
+[node name="building_point11" parent="FlyingFernsBg" instance=ExtResource("4_h3iyk")]
+position = Vector2(-111, 89)
 building_type = 2
 
 [node name="HighestLevelSouthernWallBg" parent="." instance=ExtResource("6_r18qj")]
@@ -113,37 +122,31 @@ texture = ExtResource("8_ku8p6")
 [node name="Building" parent="MeetingRoom" instance=ExtResource("8_tun15")]
 position = Vector2(-6, 8)
 scale = Vector2(2, 2)
+building_process_time = 2.0
 worker_efficiency = 0.01
 comm_cost = 2
 
 [node name="HighestLevelBgUpwellingGatherer" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(960, 540)
 texture = ExtResource("1_d7fdb")
 
-[node name="building_point" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("4_h3iyk")]
-position = Vector2(-408, 18)
-building_type = 8
+[node name="endgame_building_point" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("10_c4a5p")]
+position = Vector2(-53, 249)
 
-[node name="building_point2" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("4_h3iyk")]
-position = Vector2(343, 55)
-building_type = 8
+[node name="endgame_building_point2" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("10_c4a5p")]
+position = Vector2(145, 81)
 
-[node name="building_point3" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("4_h3iyk")]
-position = Vector2(290, 397)
-building_type = 8
+[node name="endgame_building_point3" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("10_c4a5p")]
+position = Vector2(266, 390)
 
-[node name="building_point5" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("4_h3iyk")]
-position = Vector2(-354, 397)
-building_type = 8
+[node name="endgame_building_point4" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("10_c4a5p")]
+position = Vector2(-389, 117)
 
-[node name="building_point6" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("4_h3iyk")]
-position = Vector2(-59, 237)
-building_type = 8
+[node name="endgame_building_point5" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("10_c4a5p")]
+position = Vector2(-146, 57)
 
-[node name="building_point7" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("4_h3iyk")]
-position = Vector2(-140, 44)
-building_type = 8
+[node name="endgame_building_point6" parent="HighestLevelBgUpwellingGatherer" instance=ExtResource("10_c4a5p")]
+position = Vector2(-328, 401)
 
 [node name="JourneyDownBg" type="Sprite2D" parent="."]
 visible = false
@@ -198,7 +201,7 @@ position = Vector2(-70, 62)
 [node name="BuildingsContainer" type="Node2D" parent="."]
 
 [node name="WorkerTransportShuttle" parent="." instance=ExtResource("12_q88we")]
-position = Vector2(1920, 845)
+position = Vector2(1920, 965)
 
 [node name="BoxSelect" type="Node2D" parent="."]
 script = ExtResource("12_kdb0m")
@@ -225,6 +228,7 @@ bus = &"SFX"
 [node name="TravelSFX" type="AudioStreamPlayer2D" parent="SFXHolder"]
 stream = ExtResource("17_26gl8")
 volume_db = -10.0
+pitch_scale = 2.0
 bus = &"SFX"
 
 [connection signal="timeout" from="TimeTillNextDay" to="." method="_on_time_till_next_day_timeout"]

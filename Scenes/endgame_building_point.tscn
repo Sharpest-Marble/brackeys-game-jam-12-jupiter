@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cac5u34u5v6l1"]
+
+[ext_resource type="PackedScene" uid="uid://ctg0v875xohnf" path="res://Scenes/building_point.tscn" id="1_krydt"]
+[ext_resource type="Texture2D" uid="uid://bsbwpa5aheupv" path="res://Assets/UI/wide_building_point_ICON.png" id="2_8fcpm"]
+
+[node name="endgame_building_point" instance=ExtResource("1_krydt")]
+building_type = 8
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_8fcpm")
